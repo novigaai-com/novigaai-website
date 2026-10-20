@@ -193,9 +193,9 @@ export default function Header() {
           {renderNavigation("desktop")}
         </nav>
         <div className="nav-actions">
-          <Link className="login-link" to="/contact/" onClick={closeMenus}>
+          {/* <Link className="login-link" to="/contact/" onClick={closeMenus}>
             Log In
-          </Link>
+          </Link> */}
           <Link
             className="button button-primary button-small"
             to="/contact/#demo"
