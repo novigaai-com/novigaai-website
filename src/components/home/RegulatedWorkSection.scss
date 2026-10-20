@@ -1,0 +1,51 @@
+.regulated-work.section {
+    padding: 76px 0;
+    background: #f7f9fd;
+    border-bottom: 1px solid #edf0f6;
+
+    .regulated-heading { max-width: 720px; margin: 0 auto; text-align: center; }
+    .regulated-heading h2 { font-size: clamp(1.625rem, 2.65vw, 2.125rem); line-height: 1.25; }
+    .regulated-heading > p:last-child { font-size: .8125rem; }
+    .regulated-standards { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px 25px; margin: 24px 0 36px; padding: 0; color: #667996; list-style: none; font-size: .6875rem; font-weight: 500; }
+    .regulated-standards li { display: flex; align-items: center; gap: 9px; }
+    .regulated-standards li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: #8595d5; }
+
+    .foundations-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+    .foundation-card { display: grid; grid-template-columns: 44px minmax(0, 1fr); align-items: start; gap: 20px; padding: 28px; border: 1px solid #e3e9f3; border-radius: 12px; background: #fff; }
+    .foundation-icon { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; color: #6174ca; background: #eef2fc; }
+    .foundation-icon svg { width: 23px; height: 23px; }
+    .foundation-card:nth-child(2) .foundation-icon { color: #438e98; background: #ebf5f5; }
+    .foundation-card:nth-child(3) .foundation-icon { color: #8b6cc2; background: #f2eef9; }
+    .foundation-card h3 { margin: 1px 0 11px; color: #1c3152; font-size: .9375rem; font-weight: 600; line-height: 1.5; letter-spacing: -.02em; }
+    .foundation-card p { margin: 0; color: #657791; font-size: .8125rem; line-height: 1.8; }
+
+    .platform-foundations { margin-top: 25px; border-top: 1px solid #e0e7f2; padding-top: 23px; }
+    .platform-foundations summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; color: #526b91; font-size: .75rem; font-weight: 600; line-height: 1.5; list-style: none; cursor: pointer; }
+    .platform-foundations summary::-webkit-details-marker { display: none; }
+    .platform-foundations summary > span { display: flex; align-items: center; gap: 12px; }
+    .platform-foundations summary svg { width: 19px; height: 19px; color: #7b8db6; }
+    .platform-foundations summary > svg { transition: transform .18s; }
+    .platform-foundations[open] summary > svg { transform: rotate(180deg); }
+    .architecture-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin-top: 22px; padding-top: 22px; border-top: 1px solid #e3e9f3; }
+    .architecture-grid h3 { margin: 0 0 10px; color: #344e75; font-size: .8125rem; font-weight: 600; line-height: 1.5; }
+    .architecture-grid p { margin: 0; color: #657791; font-size: .75rem; line-height: 1.8; }
+
+    @media (max-width: 800px) {
+        padding: 60px 0;
+        .foundations-grid, .architecture-grid { grid-template-columns: minmax(0, 1fr); }
+        .regulated-standards { margin-bottom: 28px; }
+    }
+
+    @media (max-width: 520px) {
+        padding: 48px 0;
+        .regulated-heading { text-align: left; }
+        .regulated-standards { justify-content: flex-start; }
+        .foundation-card { grid-template-columns: 36px minmax(0, 1fr); gap: 14px; padding: 22px 18px; }
+        .foundation-icon { width: 36px; height: 36px; border-radius: 10px; }
+        .foundation-icon svg { width: 21px; height: 21px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .platform-foundations summary > svg { transition: none; }
+    }
+}

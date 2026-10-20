@@ -1,0 +1,98 @@
+.source-strip {
+    .eyebrow { line-height: 1.6; margin-bottom: 22px; }
+    .source-list {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px 28px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        li { display: flex; align-items: center; gap: 10px; color: #314764; font-size: .8125rem; font-weight: 600; }
+        span { color: #586cf0; }
+    }
+}
+
+.overview-heading {
+    max-width: 780px;
+    margin-bottom: 32px;
+    .eyebrow { margin-bottom: 17px; line-height: 1.6; }
+    h2 { margin: 0 0 20px; font-size: clamp(1.75rem, 2.9vw, 2.5rem); font-weight: 700; line-height: 1.18; letter-spacing: -.045em; }
+    > p:last-child { margin: 0; color: #60718b; font-size: .875rem; line-height: 1.8; }
+}
+
+.overview-heading-centered { margin: 0 auto 48px; text-align: center; }
+.overview-heading-centered > p:last-child { max-width: 620px; margin-inline: auto; }
+
+.platform, .safety-workflow, .regulated-work, .audience-section {
+    a:focus-visible, summary:focus-visible { outline: 2px solid #7182ff; outline-offset: 5px; border-radius: 5px; }
+    svg { display: block; width: 24px; height: 24px; flex-shrink: 0; }
+}
+
+.safety-workflow.section {
+    padding: 80px 0;
+    border-top: 1px solid #e9edf7;
+    background: radial-gradient(ellipse at 50% 0, #e8ebff70, transparent 65%), #f5f7fc;
+
+    .workflow-grid { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); padding: 32px 8px; margin: 0; border: 1px solid #e0e5f2; border-radius: 22px; background: #fff; box-shadow: 0 12px 45px #1e3c6d05; list-style: none; }
+    .workflow-grid::before { content: ''; position: absolute; top: 58px; left: 56px; right: 56px; height: 1px; background: linear-gradient(90deg, #8c9de4, #dce3f4); }
+    .workflow-card { position: relative; display: flex; flex-direction: column; min-width: 0; padding: 0 24px; }
+    .workflow-card:not(:last-child)::after { content: ''; position: absolute; top: 88px; right: 0; bottom: 0; width: 1px; background: #edf0f7; }
+    .workflow-number { position: relative; display: grid; place-items: center; width: 52px; height: 52px; margin-bottom: 27px; border: 1px solid #dbe2f9; border-radius: 50%; background: #f3f5ff; color: #697aca; box-shadow: 0 0 0 8px #fff; font-size: .8125rem; font-weight: 600; }
+    .workflow-card:first-child .workflow-number { border-color: #586bea; background: #586bea; color: #fff; }
+    .workflow-card h3 { margin: 0 0 9px; color: #1b3052; font-size: 1.25rem; font-weight: 600; letter-spacing: -.035em; }
+    .workflow-subtitle { min-height: 2.8em; margin: 0 0 16px; color: #435b81; font-size: .75rem; font-weight: 600; line-height: 1.5; }
+    .workflow-description { flex: 1; margin: 0 0 22px; color: #687a94; font-size: .8125rem; line-height: 1.75; }
+    .workflow-tags { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0; list-style: none; }
+    .workflow-tags li { padding: 5px 8px; border-radius: 5px; background: #f0f3fa; color: #627496; font-size: .5625rem; line-height: 1.5; }
+    .workflow-details { margin-top: 22px; padding-top: 16px; border-top: 1px solid #e9edf6; }
+    .workflow-details summary { display: flex; align-items: center; justify-content: space-between; gap: 10px; color: #5266c5; font-size: .6875rem; font-weight: 600; line-height: 1.5; cursor: pointer; list-style: none; }
+    .workflow-details summary::-webkit-details-marker { display: none; }
+    .workflow-details summary svg { width: 16px; height: 16px; transition: transform .2s; }
+    .workflow-details[open] summary svg { transform: rotate(180deg); }
+    .workflow-details ul { display: grid; gap: 12px; margin: 18px 0 0; padding-left: 15px; color: #60718b; font-size: .75rem; line-height: 1.75; }
+    .workflow-details li::marker { color: #8996ce; }
+    .workflow-note { display: flex; align-items: center; gap: 14px; max-width: 900px; margin: 24px auto 0; padding: 0 8px; color: #697b97; }
+    .workflow-note > svg { color: #7588c2; }
+    .workflow-note p { margin: 0; font-size: .6875rem; line-height: 1.8; }
+    .workflow-note strong { color: #445d85; font-weight: 600; }
+}
+
+@media (max-width: 1100px) {
+    .source-strip .source-list { justify-content: center; }
+
+    .safety-workflow.section .workflow-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 36px; }
+    .safety-workflow.section .workflow-grid::before { display: none; }
+    .safety-workflow.section .workflow-card:nth-child(2)::after { display: none; }
+    .safety-workflow.section .workflow-subtitle { min-height: 0; }
+}
+
+@media (max-width: 800px) {
+    .safety-workflow.section { padding: 64px 0; }
+
+    .overview-heading h2 { font-size: clamp(1.75rem, 4.8vw, 2.25rem); }
+}
+
+@media (max-width: 650px) {
+
+    .safety-workflow.section .workflow-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; padding: 26px 20px; }
+    .safety-workflow.section .workflow-card { display: grid; grid-template-columns: 42px minmax(0, 1fr); align-content: start; column-gap: 18px; padding: 0; }
+    .safety-workflow.section .workflow-card > :not(.workflow-number) { grid-column: 2; }
+    .safety-workflow.section .workflow-number { grid-column: 1; grid-row: 1 / span 5; width: 42px; height: 42px; margin: 0; font-size: .75rem; }
+    .safety-workflow.section .workflow-card:not(:last-child)::after { display: block; top: 54px; bottom: -18px; left: 20px; right: auto; width: 1px; background: #e0e6f6; }
+    .safety-workflow.section .workflow-card h3 { margin-bottom: 7px; }
+    .safety-workflow.section .workflow-note { align-items: flex-start; }
+}
+
+@media (max-width: 420px) {
+    .safety-workflow.section { padding: 48px 0; }
+    .source-strip .source-list { gap: 16px 22px; }
+    .source-strip .source-list li { font-size: .75rem; }
+    .overview-heading-centered { margin-bottom: 32px; text-align: left; }
+    .overview-heading-centered > p:last-child { margin-inline: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .safety-workflow.section .workflow-details summary svg { transition: none; }
+}

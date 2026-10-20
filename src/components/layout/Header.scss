@@ -1,0 +1,228 @@
+:root {
+    --header-height: 88px;
+}
+
+html {
+    scroll-padding-top: calc(var(--header-height) + 18px);
+}
+
+body {
+    padding-top: var(--header-height);
+}
+
+.site-header {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 1000;
+    height: var(--header-height);
+    border-bottom: 1px solid #97b4ed14;
+    background: #041630;
+    color: #edf2ff;
+    box-shadow: 0 5px 24px #00102b24;
+
+    .nav-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        height: 100%;
+    }
+
+    .logo {
+        display: inline-flex;
+        align-items: center;
+        flex-shrink: 0;
+        overflow: visible;
+        line-height: normal;
+        flex-shrink: 0; white-space: nowrap; 
+      }
+      
+      .brand-logo {
+        display: block;
+        width: auto;
+        height: 64px;
+        max-width: none;
+        object-fit: contain;
+        overflow: visible;
+      }
+
+    a:focus-visible,
+    button:focus-visible {
+        outline: 2px solid #94b8ff;
+        outline-offset: 4px;
+    }
+
+    .desktop-nav {
+        display: flex;
+        align-items: center;
+        align-self: stretch;
+        gap: clamp(14px, 1.8vw, 28px);
+        font-size: .75rem;
+    }
+
+    .desktop-nav > a,
+    .nav-drop-heading > a {
+        display: flex;
+        align-items: center;
+        min-height: 44px;
+        white-space: nowrap;
+        transition: color .18s;
+
+        &:hover, &.active { color: #a5b5ff; }
+    }
+
+    .nav-drop { position: relative; }
+    .desktop-nav .nav-drop { display: flex; align-items: center; height: 100%; }
+    .nav-drop-heading { display: flex; align-items: center; gap: 2px; }
+
+    .nav-drop-toggle {
+        display: grid;
+        place-items: center;
+        width: 28px;
+        height: 36px;
+        padding: 0;
+        border: 0;
+        border-radius: 6px;
+        background: transparent;
+        color: #acbcdc;
+        cursor: pointer;
+
+        &:hover { color: #fff; background: #ffffff0c; }
+        svg { width: 16px; height: 16px; transition: transform .18s; }
+        &[aria-expanded='true'] svg { transform: rotate(180deg); }
+    }
+
+    .drop-panel {
+        position: absolute;
+        top: calc(100% - 5px);
+        left: -16px;
+        z-index: 1;
+        width: 260px;
+        padding: 8px;
+        border: 1px solid #e0e7f4;
+        border-radius: 12px;
+        background: #fff;
+        color: #172a4b;
+        box-shadow: 0 18px 45px #00112b35;
+
+        // The panel overlaps the trigger area so there is no hover gap.
+        &[hidden] { display: none; }
+
+        a {
+            display: block;
+            padding: 12px 14px;
+            border-radius: 7px;
+            font-size: .75rem;
+            line-height: 1.45;
+            overflow-wrap: anywhere;
+
+            &:hover, &:focus-visible { background: #eef2ff; color: #4355d2; }
+        }
+    }
+
+    .desktop-nav .nav-drop:last-child .drop-panel { left: auto; right: 0; }
+
+    .nav-actions {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        gap: 12px;
+        white-space: nowrap;
+    }
+
+    .login-link {
+        padding: 11px 22px;
+        border: 1px solid #7081a6;
+        border-radius: 30px;
+        font-size: .75rem;
+        transition: background .18s, border-color .18s;
+
+        &:hover { background: #ffffff0a; border-color: #b3c4e8; }
+    }
+
+    .menu-toggle, .mobile-nav { display: none; }
+
+    @media (max-width: 1200px) {
+        .desktop-nav, .nav-actions { display: none; }
+
+        .menu-toggle {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            width: 44px;
+            height: 44px;
+            padding: 9px;
+            border: 1px solid #ffffff26;
+            border-radius: 9px;
+            background: transparent;
+            color: #fff;
+            cursor: pointer;
+
+            span {
+                width: 22px;
+                height: 2px;
+                border-radius: 2px;
+                background: currentColor;
+                transition: transform .18s, opacity .18s;
+            }
+
+            &[aria-expanded='true'] {
+                span:first-child { transform: translateY(7px) rotate(45deg); }
+                span:nth-child(2) { opacity: 0; }
+                span:last-child { transform: translateY(-7px) rotate(-45deg); }
+            }
+        }
+
+        .mobile-nav {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            max-height: calc(100dvh - var(--header-height));
+            overflow-y: auto;
+            overscroll-behavior: contain;
+            padding: 14px max(4%, calc((100% - 650px) / 2)) 22px;
+            border-top: 1px solid #ffffff12;
+            background: #071b3a;
+            box-shadow: 0 16px 28px #000b263f;
+            font-size: .8125rem;
+
+            &[hidden] { display: none; }
+            > a:not(.button) { display: block; padding: 13px 12px; }
+            .nav-drop-heading { justify-content: space-between; }
+            .nav-drop-heading > a { flex: 1; padding: 10px 12px; }
+            .nav-drop-toggle { width: 44px; height: 44px; }
+            .nav-drop { border-top: 1px solid #ffffff0c; }
+            .button { margin-top: 12px; }
+
+            .drop-panel {
+                position: static;
+                width: auto;
+                margin: 0 0 8px 12px;
+                padding: 4px 0 4px 10px;
+                border: 0;
+                border-left: 2px solid #7389ef70;
+                border-radius: 0;
+                background: #0c2548;
+                color: #cbd8ef;
+                box-shadow: none;
+
+                a { padding: 11px 14px; }
+                a:hover, a:focus-visible { background: #16335b; color: #fff; }
+            }
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        a, .nav-drop-toggle svg, .menu-toggle span { transition: none; }
+    }
+}
+
+@media (max-width: 1200px) {
+    :root { --header-height: 72px; }
+}
