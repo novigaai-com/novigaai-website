@@ -24,64 +24,127 @@ function AgentIcon({ kind }: { kind: AgentKind }) {
 
 export default function AgenticAISection() {
     return (
-        <section className="ai-section" id="agentic-ai" aria-labelledby="agentic-ai-title">
-            <div className="wrap ai-layout">
-                <div className="ai-intro">
-                    <p className="eyebrow">EVIDENCE-LED. HUMAN-REVIEWED.</p>
-                    <h2 id="agentic-ai-title">The Power of Agentic AI</h2>
-                    <p>Noviga's retrieval-grounded assistant answers from your own cases, signals, literature and RSI labels, with evidence citations. AI supports your reviewers; people retain control of critical decisions.</p>
-                    <ul>
-                        <li>Answers grounded in your safety data</li>
-                        <li>Evidence citations and confidence</li>
-                        <li>Model and prompt version history</li>
-                        <li>Human review of critical decisions</li>
-                    </ul>
-                    <a className="button button-primary" href="/solutions/">See How It Works <span aria-hidden="true">→</span></a>
-                </div>
+      <section
+        className="ai-section"
+        id="agentic-ai"
+        aria-labelledby="agentic-ai-title"
+      >
+        <div className="wrap ai-layout">
+          <div className="ai-intro">
+            <p className="eyebrow">EVIDENCE-LED. HUMAN-REVIEWED.</p>
+            <h2 id="agentic-ai-title">The Power of Agentic AI</h2>
+            <p>
+              Noviga's retrieval-grounded assistant answers from your own cases,
+              signals, literature and RSI labels, with evidence citations. AI
+              supports your reviewers; people retain control of critical
+              decisions.
+            </p>
+            <ul>
+              <li>Answers grounded in your safety data</li>
+              <li>Evidence citations and confidence</li>
+              <li>Model and prompt version history</li>
+              <li>Human review of critical decisions</li>
+            </ul>
+            <a className="button button-primary" href="/solutions/">
+              See How It Works <span aria-hidden="true">→</span>
+            </a>
+          </div>
 
-                <div className="agent-map" role="group" aria-label="Five connected AI agents">
-                    <svg className="agent-connections" viewBox="0 0 560 320" preserveAspectRatio="none" fill="none" aria-hidden="true">
-                        <g stroke="#5262e7" strokeOpacity=".38" strokeWidth="1" strokeDasharray="3 5">
-                            <path d="M280 160V44M280 160 92 126M280 160l188-34M280 160 158 268M280 160l122 108" />
-                            <ellipse cx="280" cy="160" rx="152" ry="113" strokeOpacity=".12" />
-                        </g>
-                        <g fill="#7893ff" fillOpacity=".6">
-                            <circle cx="280" cy="91" r="2" /><circle cx="186" cy="143" r="2" />
-                            <circle cx="374" cy="143" r="2" /><circle cx="219" cy="214" r="2" />
-                            <circle cx="341" cy="214" r="2" />
-                        </g>
-                    </svg>
-                    <svg className="agent-connections agent-connections-mobile" viewBox="0 0 560 350" preserveAspectRatio="none" fill="none" aria-hidden="true">
-                        <path d="M280 175V21M280 175 134 105M280 175l146-70M280 175 140 298M280 175l140 123" stroke="#5262e7" strokeOpacity=".38" strokeWidth="1" strokeDasharray="3 5" />
-                    </svg>
-                    <div className="agent-core" role="img" aria-label="Noviga AI orchestration">
-                        <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
-                            <defs>
-                                <linearGradient id="ai-brand-color" x1="8" y1="10" x2="57" y2="55" gradientUnits="userSpaceOnUse">
-                                    <stop stopColor="#43c8fb" /><stop offset=".48" stopColor="#668bff" /><stop offset="1" stopColor="#b293ff" />
-                                </linearGradient>
-                            </defs>
-                            <path d="M14 45V34M14 19l34 30V19" stroke="url(#ai-brand-color)" strokeWidth="13" strokeLinecap="round" strokeLinejoin="round" />
-                            <path d="m14 19 8 7m18 16 8 7" stroke="url(#ai-brand-color)" strokeWidth="13" strokeLinecap="round" />
-                        </svg>
-                    </div>
-                    {agents.map(agent => (
-                        <div className={`agent-pill agent-${agent.position}`} key={agent.id}>
-                            <span className={`agent-icon agent-icon-${agent.id}`}><AgentIcon kind={agent.id} /></span>
-                            <span className="agent-label"><strong>{agent.name}</strong><small>{agent.task}</small></span>
-                        </div>
-                    ))}
-                </div>
-
-                <aside className="impact-card" aria-labelledby="ai-impact-title">
-                    <h3 id="ai-impact-title">Real Impact</h3>
-                    <dl>
-                        <div><dt>Answers cite source material.</dt><dd>Evidence</dd></div>
-                        <div><dt>People validate critical decisions.</dt><dd>Oversight</dd></div>
-                        <div><dt>Confidence and AI versions recorded.</dt><dd>Traceability</dd></div>
-                    </dl>
-                </aside>
+          <div
+            className="agent-map"
+            role="group"
+            aria-label="Five connected AI agents"
+          >
+            <svg
+              className="agent-connections"
+              viewBox="0 0 560 320"
+              preserveAspectRatio="none"
+              fill="none"
+              aria-hidden="true"
+            >
+              <g
+                stroke="#5262e7"
+                strokeOpacity=".38"
+                strokeWidth="1"
+                strokeDasharray="3 5"
+              >
+                <path d="M280 160V44M280 160 92 126M280 160l188-34M280 160 158 268M280 160l122 108" />
+                <ellipse
+                  cx="280"
+                  cy="160"
+                  rx="152"
+                  ry="113"
+                  strokeOpacity=".12"
+                />
+              </g>
+              <g fill="#7893ff" fillOpacity=".6">
+                <circle cx="280" cy="91" r="2" />
+                <circle cx="186" cy="143" r="2" />
+                <circle cx="374" cy="143" r="2" />
+                <circle cx="219" cy="214" r="2" />
+                <circle cx="341" cy="214" r="2" />
+              </g>
+            </svg>
+            <svg
+              className="agent-connections agent-connections-mobile"
+              viewBox="0 0 560 350"
+              preserveAspectRatio="none"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M280 175V21M280 175 134 105M280 175l146-70M280 175 140 298M280 175l140 123"
+                stroke="#5262e7"
+                strokeOpacity=".38"
+                strokeWidth="1"
+                strokeDasharray="3 5"
+              />
+            </svg>
+            <div
+              className="agent-core"
+              role="img"
+              aria-label="Noviga AI orchestration"
+            >
+              <img
+                src={"/assets/logo-icon.png"}
+                alt="NovigaAI - Intelligent. Connected. Safer."
+                className="center-brand-logo"
+              />
             </div>
-        </section>
+            {agents.map((agent) => (
+              <div
+                className={`agent-pill agent-${agent.position}`}
+                key={agent.id}
+              >
+                <span className={`agent-icon agent-icon-${agent.id}`}>
+                  <AgentIcon kind={agent.id} />
+                </span>
+                <span className="agent-label">
+                  <strong>{agent.name}</strong>
+                  <small>{agent.task}</small>
+                </span>
+              </div>
+            ))}
+          </div>
+
+          <aside className="impact-card" aria-labelledby="ai-impact-title">
+            <h3 id="ai-impact-title">Real Impact</h3>
+            <dl>
+              <div>
+                <dt>Answers cite source material.</dt>
+                <dd>Evidence</dd>
+              </div>
+              <div>
+                <dt>People validate critical decisions.</dt>
+                <dd>Oversight</dd>
+              </div>
+              <div>
+                <dt>Confidence and AI versions recorded.</dt>
+                <dd>Traceability</dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+      </section>
     );
 }
