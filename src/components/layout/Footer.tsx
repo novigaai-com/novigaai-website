@@ -4,9 +4,9 @@ export default function Footer() {
       <div className={"wrap"}>
         <div className={"footer-top"}>
           <a href={"/"} className={"logo"}>
-            <span className={"brand-glyph"} aria-hidden="true">
+            {/* <span className={"brand-glyph"} aria-hidden="true">
               N
-            </span>
+            </span> */}
             <b>NovigaAi</b>
           </a>
           <nav aria-label={"Footer navigation"}>
@@ -31,7 +31,7 @@ export default function Footer() {
         </div>
         <div className={"footer-bottom"}>
           <span>
-            © <span id={"year"}>2026</span> NovigaAI. All rights reserved.   |  
+            © <span id={"year"}>2026</span> NovigaAI Technologies Pvt Ltd. All rights reserved.   |  
             <a href={"/contact/"}>Privacy Policy</a>   |  {" "}
             <a href={"/contact/"}>Terms of Service</a>
           </span>
