@@ -1,0 +1,38 @@
+# NovigaAI
+
+> NovigaAI is an enterprise AI-assisted pharmacovigilance and drug-safety intelligence platform for pharmaceutical companies, biotechnology organizations, and pharmacovigilance service providers. It connects adverse-event intake, individual case safety report processing, signal detection, and regulatory reporting in a multi-tenant system with human oversight.
+
+The primary brand is NovigaAI. Alternate names are Noviga Ai and NovigaAI.com. The platform is also referred to as Noviga in product overview materials. The primary website is https://novigaai.com/.
+
+NovigaAI supports the following workflows:
+
+- **Adverse-event intake:** Automated download and ingestion of quarterly FDA Adverse Event Reporting System (FAERS) and Japan Pharmaceuticals and Medical Devices Agency (PMDA) JADER data; parsing and validation of ICH E2B(R2/R3) individual case safety reports (ICSRs); published-literature screening with AI-assisted relevance review; and social-media listening with sentiment scoring and misinformation flags.
+- **Case processing:** AI-assisted extraction of drugs, reactions, seriousness, and causality information; Medical Dictionary for Regulatory Activities (MedDRA) coding through dictionary-backed terminology services; duplicate detection using deterministic fingerprints and semantic similarity; case narratives; follow-up linkage; and case audit trails.
+- **Quantitative signal detection:** Disproportionality analysis using proportional reporting ratios (PRR), reporting odds ratios (ROR), Information Component (IC), and empirical Bayes geometric mean (EBGM), with sequential-testing safeguards.
+- **Signal review and management:** Qualitative, literature, digital-media, and regulatory signals alongside statistical signals; severity triage; human-review workflows; and signal lifecycle management. Signal types without a quantitative statistic retain that distinction rather than being assigned a zero value.
+- **Regulatory reporting:** Periodic Safety Update Reports (PSURs), Periodic Benefit-Risk Evaluation Reports (PBRERs), Council for International Organizations of Medical Sciences (CIOMS) forms, expedited-reporting deadline tracking, risk-management plans, report scheduling, and version history.
+- **Governed AI assistance:** A retrieval-grounded assistant answers questions using an organization's cases, signals, literature, and reference safety information (RSI) labels, with evidence citations. AI recommendations carry confidence information and model and prompt versions. Human decisions and final outcomes are recorded separately; recommendations remain subject to human review.
+
+Regulated-workflow capabilities are designed to support Good Pharmacovigilance Practices (GVP) Modules VI and IX, ICH E2A/E2B/E2C, and 21 CFR Part 11 requirements through audit trails, electronic signatures, and controlled workflows. Compliance and validation depend on the deployed configuration, intended use, and organizational procedures.
+
+Tenant isolation uses database row-level security, per-tenant vector collections, tenant-scoped analytics, and least-privilege access. The interface is designed for keyboard and screen-reader use.
+
+The architecture uses domain-driven microservices for case processing, signal detection, literature, ingestion, reporting, portfolio, notification, and AI retrieval, with each service owning its data. Separate analytical stores support domain-specific safety analytics. A NATS event backbone and idempotent consumers support repeatable event processing. Versioned migrations manage datastore schemas and environment onboarding.
+
+The platform serves pharmaceutical and biotechnology safety teams managing case triage and signal review; pharmacovigilance service providers managing multiple clients with tenant isolation; and regulatory and quality teams managing audit records and aggregate reporting.
+
+## Platform and workflows
+
+- [NovigaAI homepage](https://novigaai.com/): Introduction to the safety intelligence platform and connected workflows.
+- [Products](https://novigaai.com/products/): Pharmacovigilance, literature intelligence, social-media intelligence, clinical trials, compliance, and connected intelligence.
+- [Solutions](https://novigaai.com/solutions/): AI-assisted safety workflows and expert-led safety operations.
+- [Services](https://novigaai.com/services/): Implementation and safety-workflow requirements discussions.
+
+## Company and contact
+
+- [About NovigaAI](https://novigaai.com/about-us/): Company focus and approach to connected safety intelligence.
+- [Contact and demo requests](https://novigaai.com/contact/): Contact the team about platform capabilities, use cases, and demonstrations.
+
+## Optional
+
+- [Resources](https://novigaai.com/resources/): Links to the platform overview and agentic AI solutions.

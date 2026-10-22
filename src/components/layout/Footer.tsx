@@ -18,15 +18,20 @@ export default function Footer() {
             <a href={"/contact/"}>Contact</a>
           </nav>
           <div className={"social-links"}>
-            <a href={"/contact/"} aria-label={"LinkedIn information"}>
+            <a
+              href="https://www.linkedin.com/in/noviga-ai/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="NovigaAI on LinkedIn (opens in a new tab)"
+            >
               in
             </a>
-            <a href={"/contact/"} aria-label={"X information"}>
+            {/* <a href={"/contact/"} aria-label={"X information"}>
               𝕏
             </a>
             <a href={"/contact/"} aria-label={"Video information"}>
               ▶
-            </a>
+            </a> */}
           </div>
         </div>
         <div className={"footer-bottom"}>
