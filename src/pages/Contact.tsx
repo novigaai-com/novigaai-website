@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react';
-import './Contact.scss';
+import PageMeta from '../components/common/PageMeta';
 
 type Status = 'idle' | 'sending' | 'success' | 'error';
 const interests = ['Pharmacovigilance', 'Literature Intelligence', 'Social Media Intelligence', 'Clinical Trials', 'Compliance', 'General enquiry'];
@@ -9,14 +9,29 @@ export default function Contact() {
   const [feedback, setFeedback] = useState('');
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const endpoint = import.meta.env.VITE_CONTACT_ENDPOINT;
-    if (!endpoint) {
-      setStatus('error');
-      setFeedback('The contact form is not connected yet. Please configure VITE_CONTACT_ENDPOINT to enable submissions.');
-      return;
-    }
     const form = event.currentTarget;
     const payload = Object.fromEntries(new FormData(form).entries());
+    const endpoint = import.meta.env.VITE_CONTACT_ENDPOINT;
+
+    // Production fallback: if no form endpoint is configured, compose a
+    // pre-filled email so the enquiry is never silently lost.
+    if (!endpoint) {
+      const subject = `Website enquiry — ${payload.company || payload.name || 'NovigaAI'}`;
+      const body = [
+        `Name: ${payload.name || ''}`,
+        `Email: ${payload.email || ''}`,
+        `Company: ${payload.company || ''}`,
+        `Job title: ${payload.jobTitle || ''}`,
+        `Area of interest: ${payload.interest || ''}`,
+        '',
+        `${payload.message || ''}`,
+      ].join('\n');
+      window.location.href = `mailto:contact@novigaai.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      setStatus('success');
+      setFeedback('Your email app should open with your request. If it does not, please email contact@novigaai.com directly.');
+      return;
+    }
+
     setStatus('sending');
     setFeedback('');
     try {
@@ -31,11 +46,15 @@ export default function Contact() {
       setFeedback('Thank you. Your request has been submitted successfully.');
     } catch {
       setStatus('error');
-      setFeedback('We could not submit your request. Please try again later.');
+      setFeedback('We could not submit your request. Please try again or email contact@novigaai.com.');
     }
   }
   return (
     <>
+      <PageMeta
+        title="Contact NovigaAI — request a demo"
+        description="Talk to the NovigaAI team about pharmacovigilance, signal management, literature surveillance, case processing or a platform demo."
+      />
       <section className="contact-hero">
         <div className="wrap contact-hero-inner">
           <p className="eyebrow">CONTACT NOVIGAAI</p>

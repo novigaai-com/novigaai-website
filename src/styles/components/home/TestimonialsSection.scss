@@ -1,0 +1,76 @@
+@use '../../../styles/tokens' as *;
+
+/* ==========================================================================
+   TESTIMONIALS SECTION
+   ========================================================================== */
+
+.testimonials {
+  padding: var(--space-3xl) 0;
+}
+
+.testimonials h2 {
+  font-size: var(--text-3xl);
+  margin: -6px 0 var(--space-lg);
+  text-align: center;
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+.quote-card {
+  display: flex;
+  gap: var(--space-md);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  box-shadow: 0 3px 18px var(--color-shadow-md);
+}
+
+.avatar {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(145deg, var(--color-avatar-gradient-start), var(--color-avatar-gradient-end));
+  color: var(--color-avatar-text);
+  font-weight: var(--font-bold);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+}
+
+.quote-card p {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-loose);
+  margin: 0 0 var(--space-md);
+}
+
+.quote-card b,
+.quote-card small {
+  display: block;
+  font-size: var(--text-xs);
+}
+
+.quote-card b {
+  font-weight: var(--font-bold);
+  color: var(--color-text-primary);
+}
+
+.quote-card small {
+  color: var(--color-text-muted);
+  margin-top: var(--space-xs);
+}
+
+/* ==========================================================================
+   TESTIMONIALS RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 800px) {
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+}

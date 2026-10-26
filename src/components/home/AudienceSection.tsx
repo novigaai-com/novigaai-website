@@ -1,4 +1,5 @@
 import OverviewIcon, { type OverviewIconName } from './OverviewIcon';
+import { Link } from "react-router-dom";
 import './AudienceSection.scss';
 
 const audiences: { title: string; description: string; link: string; icon: OverviewIconName; tags: string[] }[] = [
@@ -25,7 +26,7 @@ export default function AudienceSection() {
                             <h3>{audience.title}</h3>
                             <p>{audience.description}</p>
                             <ul className="audience-tags">{audience.tags.map(tag => <li key={tag}>{tag}</li>)}</ul>
-                            <a href="/contact/#demo">{audience.link} <OverviewIcon name="arrow" /></a>
+                            <Link to="/contact/#demo">{audience.link} <OverviewIcon name="arrow" /></Link>
                         </article>
                     ))}
                 </div>

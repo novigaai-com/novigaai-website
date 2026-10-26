@@ -1,0 +1,17 @@
+{
+  "name": "NovigaAI",
+  "short_name": "NovigaAI",
+  "description": "AI-Native Pharmacovigilance & Safety Intelligence Platform",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#03132e",
+  "theme_color": "#03132e",
+  "icons": [
+    {
+      "src": "/assets/logo-icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

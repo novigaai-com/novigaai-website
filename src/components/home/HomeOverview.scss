@@ -41,7 +41,7 @@
     .workflow-card:not(:last-child)::after { content: ''; position: absolute; top: 88px; right: 0; bottom: 0; width: 1px; background: #edf0f7; }
     .workflow-number { position: relative; display: grid; place-items: center; width: 52px; height: 52px; margin-bottom: 27px; border: 1px solid #dbe2f9; border-radius: 50%; background: #f3f5ff; color: #697aca; box-shadow: 0 0 0 8px #fff; font-size: .8125rem; font-weight: 600; }
     .workflow-card:first-child .workflow-number { border-color: #586bea; background: #586bea; color: #fff; }
-    .workflow-card h3 { margin: 0 0 9px; color: #1b3052; font-size: 1.25rem; font-weight: 600; letter-spacing: -.035em; }
+    .workflow-card h3 { margin: 0 0 9px; color: #1b3052; font-size: 1.25rem; font-weight: 600; letter-spacing: -.035em; line-height: 1.2; }
     .workflow-subtitle { min-height: 2.8em; margin: 0 0 16px; color: #435b81; font-size: .75rem; font-weight: 600; line-height: 1.5; }
     .workflow-description { flex: 1; margin: 0 0 22px; color: #687a94; font-size: .8125rem; line-height: 1.75; }
     .workflow-tags { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0; list-style: none; }

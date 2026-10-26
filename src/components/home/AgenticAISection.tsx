@@ -1,11 +1,12 @@
 import './AgenticAISection.scss';
+import { Link } from "react-router-dom";
 
 const agents = [
-    { id: 'literature', name: 'Literature Agent', task: 'Screen & Review', position: 'top' },
-    { id: 'social', name: 'Social Media Agent', task: 'Monitor & Analyze', position: 'left' },
-    { id: 'signal', name: 'Signal Agent', task: 'Triage & Assess', position: 'right' },
-    { id: 'case', name: 'Case Agent', task: 'Extract & Prepare', position: 'bottom-left' },
-    { id: 'compliance', name: 'Compliance Agent', task: 'Review & Document', position: 'bottom-right' },
+    { id: 'literature', name: 'Literature Agent', task: 'Screen & Assess', description: 'Multi-source literature scanning with AI relevance scoring and ICSR eligibility checks', position: 'top' },
+    { id: 'case', name: 'Case Agent', task: 'Extract & Prepare', description: 'AI-assisted case extraction, MedDRA coding, duplicate detection, and narrative generation', position: 'left' },
+    { id: 'signal', name: 'Signal Agent', task: 'Triage & Assess', description: 'Statistical signal detection, Bradford Hill assessment, and cross-source concordance', position: 'right' },
+    { id: 'compliance', name: 'Compliance Agent', task: 'Review & Document', description: 'Deadline tracking, report versioning, audit trail generation, and regulatory validation', position: 'bottom-left' },
+    { id: 'safety', name: 'Safety Intelligence Agent', task: 'Brief & Advise', description: 'Executive safety briefings, portfolio heatmaps, and usage analytics', position: 'bottom-right' },
 ] as const;
 
 type AgentKind = typeof agents[number]['id'];
@@ -14,13 +15,20 @@ function AgentIcon({ kind }: { kind: AgentKind }) {
     return (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             {kind === 'literature' && <><path d="M12 5v15M4 4.5c3-1 5.5-.5 8 1.5 2.5-2 5-2.5 8-1.5v14c-3-1-5.5-.5-8 1.5-2.5-2-5-2.5-8-1.5z" /><path d="m7 8 2 1m-2 3 2 1m6-4 2-1m-2 5 2-1" /></>}
-            {kind === 'social' && <><rect x="4" y="4" width="16" height="16" rx="4" /><circle cx="12" cy="9" r="2.5" /><path d="M7.5 17v-1a4.5 4.5 0 0 1 9 0v1M7 11H5m14 0h-2" /></>}
-            {kind === 'signal' && <><rect x="5" y="3" width="14" height="18" rx="2" /><path d="M9 7h6M9 17h6M8 12h2l1-3 2 6 1-3h2" /></>}
             {kind === 'case' && <><rect x="6" y="5" width="13" height="16" rx="2" /><path d="M15 5V3H3v15h3m4-9h5m-5 4h5m-5 4h3" /></>}
+            {kind === 'signal' && <><rect x="5" y="3" width="14" height="18" rx="2" /><path d="M9 7h6M9 17h6M8 12h2l1-3 2 6 1-3h2" /></>}
             {kind === 'compliance' && <><rect x="4" y="4" width="16" height="16" rx="3" /><path d="M8 8h8M8 12h3m-3 4h3m2-2 1.5 1.5L18 12" /></>}
+            {kind === 'safety' && <><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></>}
         </svg>
     );
 }
+
+const aiCapabilities = [
+    'Answers grounded in your safety data',
+    'Evidence citations and confidence',
+    'Model and prompt version history',
+    'Human review of critical decisions',
+];
 
 export default function AgenticAISection() {
     return (
@@ -34,20 +42,17 @@ export default function AgenticAISection() {
             <p className="eyebrow">EVIDENCE-LED. HUMAN-REVIEWED.</p>
             <h2 id="agentic-ai-title">The Power of Agentic AI</h2>
             <p>
-              Noviga's retrieval-grounded assistant answers from your own cases,
-              signals, literature and RSI labels, with evidence citations. AI
-              supports your reviewers; people retain control of critical
-              decisions.
+              Noviga's retrieval-grounded assistant answers from your own cases, signals, literature and RSI labels, with
+              evidence citations. AI supports your reviewers; people retain control of critical decisions.
             </p>
             <ul>
-              <li>Answers grounded in your safety data</li>
-              <li>Evidence citations and confidence</li>
-              <li>Model and prompt version history</li>
-              <li>Human review of critical decisions</li>
+              {aiCapabilities.map((cap, idx) => (
+                <li key={idx}>{cap}</li>
+              ))}
             </ul>
-            <a className="button button-primary" href="/solutions/">
-              See How It Works <span aria-hidden="true">→</span>
-            </a>
+            <Link className="button button-primary" to="/platform/ai-agentic">
+              Explore AI Architecture <span aria-hidden="true">→</span>
+            </Link>
           </div>
 
           <div
@@ -128,7 +133,7 @@ export default function AgenticAISection() {
           </div>
 
           <aside className="impact-card" aria-labelledby="ai-impact-title">
-            <h3 id="ai-impact-title">Real Impact</h3>
+            <h3 id="ai-impact-title">Governance & Trust</h3>
             <dl>
               <div>
                 <dt>Answers cite source material.</dt>
