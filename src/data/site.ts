@@ -25,15 +25,6 @@ export const navigation: NavItem[] = [
     id: "products",
     megaMenu: [
       {
-        title: "Safety Intelligence",
-        items: [
-          { label: "Signal Detection", href: "/products/signal-detection", description: "PRR, ROR, IC and EBGM with sequential-testing safeguards" },
-          { label: "Signal Investigation", href: "/products/signal-investigation", description: "Bradford Hill assessment, evidence dossiers and cluster analysis" },
-          { label: "Risk Intelligence", href: "/products/risk-intelligence", description: "Benefit-risk context, risk minimisation and lifecycle tracking" },
-          { label: "Evidence & Research", href: "/products/evidence-research", description: "Literature and real-world evidence synthesis with provenance" },
-        ],
-      },
-      {
         title: "Case Operations",
         items: [
           { label: "Case Management", href: "/products/case-management", description: "End-to-end ICSR processing, coding and narrative generation" },
@@ -41,6 +32,15 @@ export const navigation: NavItem[] = [
           { label: "Literature Intelligence", href: "/products/literature-intelligence", description: "Automated screening of PubMed, OpenAlex and trial registries" },
           { label: "Partner Intake", href: "/products/partner-intake", description: "Partner and distributor safety data exchange through one gateway" },
           { label: "Regulatory Reporting", href: "/products/regulatory-reporting", description: "PSUR/PBRER, CIOMS, RMP and expedited deadline management" },
+        ],
+      },
+      {
+        title: "Safety Intelligence",
+        items: [
+          { label: "Signal Detection", href: "/products/signal-detection", description: "PRR, ROR, IC and EBGM with sequential-testing safeguards" },
+          { label: "Signal Investigation", href: "/products/signal-investigation", description: "Bradford Hill assessment, evidence dossiers and cluster analysis" },
+          { label: "Risk Intelligence", href: "/products/risk-intelligence", description: "Benefit-risk context, risk minimisation and lifecycle tracking" },
+          { label: "Evidence & Research", href: "/products/evidence-research", description: "Literature and real-world evidence synthesis with provenance" },
         ],
       },
       {
