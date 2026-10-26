@@ -72,13 +72,6 @@ NovigaAI is an AI-native pharmacovigilance and safety intelligence platform that
 - CIOMS I, VI, VIII
 - ISO 27001 aligned controls and a SOC 2 Type II programme
 
-## Security & Governance
-- Multi-tenant isolation at every layer: PostgreSQL RLS, ClickHouse tenant-scoped queries, per-tenant Qdrant collections
-- Encryption at rest and in transit; details are shared with customers under NDA
-- Role-based access control (RBAC) with configurable decision authority matrices
-- Immutable audit trails for all AI recommendations and human decisions
-- Configurable approval gates: no critical decision without human sign-off
-
 ## Target Audiences
 - Pharmaceutical & biotechnology safety teams
 - Pharmacovigilance service providers (CROs)
