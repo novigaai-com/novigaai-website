@@ -1,0 +1,6 @@
+# NovigaAI robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.novigaai.com/sitemap.xml

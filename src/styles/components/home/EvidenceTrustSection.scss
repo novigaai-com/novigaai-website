@@ -1,0 +1,153 @@
+@use '../../../styles/tokens' as *;
+
+/* ==========================================================================
+   EVIDENCE & TRUST SECTION
+   ========================================================================== */
+
+.evidence-trust {
+  padding: var(--space-3xl) 0;
+  background: var(--color-bg-tertiary);
+}
+
+.evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.evidence-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-xl);
+  padding: var(--space-lg);
+  box-shadow: 0 4px 18px var(--color-shadow-sm);
+  transition: transform var(--transition-base), border-color var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .evidence-card {
+    transition: none;
+  }
+}
+
+.evidence-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-hover-border);
+}
+
+.evidence-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background: var(--color-primary-light);
+  color: var(--color-primary-text);
+  font-size: var(--text-2xl);
+}
+
+.evidence-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.evidence-card h3 {
+  font-size: var(--text-lg);
+  margin: 0;
+}
+
+.evidence-card p {
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.evidence-details {
+  border-top: 1px solid var(--color-border-light);
+  padding-top: var(--space-md);
+  margin-top: auto;
+}
+
+.evidence-details summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--color-primary-text);
+  list-style: none;
+}
+
+.evidence-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.evidence-details summary svg {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  transition: transform var(--transition-fast);
+}
+
+.evidence-details[open] summary svg {
+  transform: rotate(180deg);
+}
+
+.evidence-details ul {
+  margin: var(--space-md) 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-secondary);
+}
+
+.evidence-details li {
+  position: relative;
+  margin-bottom: var(--space-xs);
+  padding-left: 18px;
+}
+
+.evidence-details li:last-child {
+  margin-bottom: 0;
+}
+
+.evidence-details li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 8px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--color-primary);
+}
+
+.evidence-cta {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   EVIDENCE & TRUST RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 520px) {
+  .evidence-cta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .evidence-cta .button {
+    justify-content: center;
+  }
+}

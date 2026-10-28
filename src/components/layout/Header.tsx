@@ -1,46 +1,8 @@
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { Link, NavLink } from "react-router-dom";
-import "./Header.scss";
+import { navigation as siteNavigation } from "../../data/site";
 
-const navigation = [
-  { label: "Home", href: "/", id: "home", children: [] },
-  {
-    label: "Products",
-    href: "/products/",
-    id: "products",
-    children: [
-      { label: "Pharmacovigilance", href: "/products/#pharmacovigilance" },
-      { label: "Literature Intelligence", href: "/products/#literature" },
-      { label: "Social Media Intelligence", href: "/products/#social" },
-      { label: "Clinical Trials", href: "/products/#clinical" },
-      { label: "Compliance", href: "/products/#compliance" },
-    ],
-  },
-  {
-    label: "Solutions",
-    href: "/solutions/",
-    id: "solutions",
-    children: [
-      { label: "AI Agents", href: "/solutions/" },
-      { label: "Services", href: "/services/" },
-    ],
-  },
-  {
-    label: "Resources",
-    href: "/resources/",
-    id: "resources",
-    children: [{ label: "Resources overview", href: "/resources/" }],
-  },
-  {
-    label: "About Us",
-    href: "/about-us/",
-    id: "about",
-    children: [
-      { label: "Our company", href: "/about-us/" },
-      { label: "Contact", href: "/contact/" },
-    ],
-  },
-];
+const navigation = siteNavigation;
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -62,7 +24,7 @@ export default function Header() {
         closeMenus();
       }
     }
-    const desktop = window.matchMedia("(min-width: 1201px)");
+    const desktop = window.matchMedia("(min-width: 1101px)");
     function onBreakpointChange() {
       closeMenus();
     }
@@ -93,9 +55,9 @@ export default function Header() {
 
   function renderNavigation(surface: "desktop" | "mobile") {
     return navigation.map((item) => {
-      if (!item.children.length) {
+      if (!item.children?.length && !item.megaMenu) {
         return (
-          <NavLink key={item.id} to={item.href} end onClick={closeMenus}>
+          <NavLink key={item.id} to={item.href} end onClick={closeMenus} className="nav-link">
             {item.label}
           </NavLink>
         );
@@ -128,7 +90,7 @@ export default function Header() {
           }}
         >
           <div className="nav-drop-heading">
-            <NavLink to={item.href} onClick={closeMenus}>
+            <NavLink to={item.href} onClick={closeMenus} className="nav-link">
               {item.label}
             </NavLink>
             <button
@@ -142,12 +104,11 @@ export default function Header() {
                 if (event.key === "ArrowDown") {
                   event.preventDefault();
                   setActiveDropdown(id);
-                  requestAnimationFrame(() =>
-                    document
-                      .getElementById(`${id}-panel`)
-                      ?.querySelector("a")
-                      ?.focus()
-                  );
+                  requestAnimationFrame(() => {
+                    const panel = document.getElementById(`${id}-panel`);
+                    const focusable = panel?.querySelector<HTMLElement>("a, button");
+                    focusable?.focus();
+                  });
                 }
               }}
             >
@@ -163,11 +124,38 @@ export default function Header() {
             </button>
           </div>
           <div className="drop-panel" id={`${id}-panel`} hidden={!open}>
-            {item.children.map((child) => (
-              <Link key={child.href} to={child.href} onClick={closeMenus}>
-                {child.label}
-              </Link>
-            ))}
+            {item.megaMenu ? (
+              <div className={`mega-menu cols-${item.megaMenu.length}`}>
+                {item.megaMenu.map((category, idx) => (
+                  <div key={idx} className="mega-menu-category">
+                    <h4 className="mega-menu-category-title">{category.title}</h4>
+                    <ul className="mega-menu-items">
+                      {category.items.map((child) => (
+                        <li key={child.href}>
+                          <Link to={child.href} onClick={closeMenus} className="mega-menu-link">
+                            <span className="mega-menu-link-label">{child.label}</span>
+                            {child.description && (
+                              <span className="mega-menu-link-desc">{child.description}</span>
+                            )}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+                <div className="mega-menu-cta">
+                  <Link to={item.href} className="button button-primary button-small" onClick={closeMenus}>
+                    View All {item.label} <span aria-hidden="true">→</span>
+                  </Link>
+                </div>
+              </div>
+            ) : (
+              item.children?.map((child) => (
+                <Link key={child.href} to={child.href} onClick={closeMenus} className="drop-panel-link">
+                  {child.label}
+                </Link>
+              ))
+            )}
           </div>
         </div>
       );
@@ -193,9 +181,6 @@ export default function Header() {
           {renderNavigation("desktop")}
         </nav>
         <div className="nav-actions">
-          {/* <Link className="login-link" to="/contact/" onClick={closeMenus}>
-            Log In
-          </Link> */}
           <Link
             className="button button-primary button-small"
             to="/contact/#demo"
@@ -228,19 +213,15 @@ export default function Header() {
         hidden={!menuOpen}
       >
         {renderNavigation("mobile")}
-        <Link to="/services/" onClick={closeMenus}>
-          Services
-        </Link>
-        <Link to="/contact/" onClick={closeMenus}>
-          Contact
-        </Link>
-        <Link
-          className="button button-primary"
-          to="/contact/#demo"
-          onClick={closeMenus}
-        >
-          Request a Demo <span aria-hidden="true">→</span>
-        </Link>
+        <div className="mobile-nav-footer">
+          <Link
+            className="button button-primary"
+            to="/contact/#demo"
+            onClick={closeMenus}
+          >
+            Request a Demo <span aria-hidden="true">→</span>
+          </Link>
+        </div>
       </nav>
     </header>
   );

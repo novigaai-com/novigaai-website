@@ -1,0 +1,300 @@
+@use '../../../styles/tokens' as *;
+
+/* ==========================================================================
+   AGENTIC AI SECTION
+   ========================================================================== */
+
+.ai-section {
+  background: var(--color-bg-tertiary);
+  padding: var(--space-3xl) 0;
+}
+
+.ai-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: flex-start;
+}
+
+.ai-intro {
+  padding-top: var(--space-lg);
+}
+
+.ai-intro .eyebrow {
+  margin-bottom: var(--space-lg);
+}
+
+.ai-intro h2 {
+  font-size: var(--text-4xl);
+  letter-spacing: -1.2px;
+  line-height: 1.2;
+  margin: 0 0 var(--space-md);
+}
+
+.ai-intro > p {
+  font-size: var(--text-base);
+  line-height: var(--leading-loose);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-lg);
+  max-width: 425px;
+}
+
+.ai-intro ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.ai-intro li {
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-secondary);
+  padding-left: 0;
+}
+
+.ai-intro li strong {
+  color: var(--color-text-primary);
+  font-weight: var(--font-semibold);
+}
+
+.ai-map {
+  position: relative;
+}
+
+.agent-connections {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  display: block;
+}
+
+.agent-connections-mobile {
+  display: none;
+}
+
+.agent-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.center-brand-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--color-brand-gradient-start), var(--color-brand-gradient-mid) 45%, var(--color-brand-gradient-end));
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 20px 40px rgba(85, 96, 246, 0.3);
+}
+
+.center-brand-logo img {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+  object-fit: contain;
+}
+
+.agent-pill {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-pill);
+  padding: var(--space-sm) var(--space-md);
+  box-shadow: 0 8px 24px var(--color-shadow-sm);
+  white-space: nowrap;
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .agent-pill {
+    transition: none;
+  }
+}
+
+.agent-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px var(--color-shadow-md);
+  border-color: var(--color-hover-border);
+}
+
+.agent-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  color: var(--color-text-on-dark);
+}
+
+.agent-icon-literature { background: linear-gradient(135deg, #617bff, #4a48ee); }
+.agent-icon-social { background: linear-gradient(135deg, #ab59c5, #8b4bb5); }
+.agent-icon-signal { background: linear-gradient(135deg, #38a5a4, #2d8a89); }
+.agent-icon-case { background: linear-gradient(135deg, #d38b35, #b87a2e); }
+.agent-icon-compliance { background: linear-gradient(135deg, #26a87d, #1f8a66); }
+
+.agent-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+}
+
+.agent-label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.agent-label strong {
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  color: var(--color-text-primary);
+}
+
+.agent-label small {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+/* Agent positions */
+.agent-top {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.agent-left {
+  top: 30%;
+  left: 0;
+  transform: translateX(-50%);
+}
+
+.agent-right {
+  top: 30%;
+  right: 0;
+  transform: translateX(50%);
+}
+
+.agent-bottom-left {
+  bottom: 10%;
+  left: 15%;
+}
+
+.agent-bottom-right {
+  bottom: 10%;
+  right: 15%;
+}
+
+.impact-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-xl);
+  padding: var(--space-lg);
+  box-shadow: 0 4px 18px var(--color-shadow-sm);
+}
+
+.impact-card h3 {
+  font-size: var(--text-lg);
+  margin: 0 0 var(--space-md);
+}
+
+.impact-card dl {
+  display: grid;
+  gap: var(--space-md);
+  margin: 0;
+}
+
+.impact-card dt {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-primary);
+  margin: 0 0 var(--space-xs);
+}
+
+.impact-card dd {
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
+  color: var(--color-primary-text);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+/* ==========================================================================
+   AGENTIC AI RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 1100px) {
+  .ai-layout {
+    gap: var(--space-2xl);
+  }
+
+  .ai-intro h2 {
+    font-size: 1.8125rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .ai-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .ai-map {
+    order: -1;
+  }
+
+  .agent-connections {
+    display: none;
+  }
+
+  .agent-connections-mobile {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 200px;
+  }
+
+  .agent-pill {
+    position: static;
+    transform: none !important;
+    margin-bottom: var(--space-sm);
+  }
+
+  .agent-map {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    align-items: stretch;
+  }
+
+  .agent-core {
+    position: static;
+    transform: none;
+    display: flex;
+    justify-content: center;
+    margin: var(--space-md) 0;
+  }
+
+  .impact-card {
+    order: 1;
+  }
+}
+
+@media (max-width: 520px) {
+  .ai-intro ul {
+    grid-template-columns: 1fr;
+  }
+}

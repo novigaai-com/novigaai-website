@@ -1,38 +1,85 @@
-# NovigaAI
+# NovigaAI - AI-Native Pharmacovigilance & Safety Intelligence Platform
 
-> NovigaAI is an enterprise AI-assisted pharmacovigilance and drug-safety intelligence platform for pharmaceutical companies, biotechnology organizations, and pharmacovigilance service providers. It connects adverse-event intake, individual case safety report processing, signal detection, and regulatory reporting in a multi-tenant system with human oversight.
+## Overview
+NovigaAI is an AI-native pharmacovigilance and safety intelligence platform that connects adverse-event reports, scientific literature, real-world data, and social channels into a unified platform for case processing, signal detection, and regulatory reporting.
 
-The primary brand is NovigaAI. Alternate names are Noviga Ai and NovigaAI.com. The platform is also referred to as Noviga in product overview materials. The primary website is https://novigaai.com/.
+## Core Capabilities
 
-NovigaAI supports the following workflows:
+### Signal Detection
+- Statistical signal detection using PRR, ROR, Information Component (IC), and EBGM
+- Sequential testing with alpha-spending boundaries to prevent false positives
+- Multi-dimensional scoring combining statistical strength, clinical seriousness, novelty, and cross-source concordance
+- Cross-source concordance analysis across FAERS, JADER, literature, and social media
 
-- **Adverse-event intake:** Automated download and ingestion of quarterly FDA Adverse Event Reporting System (FAERS) and Japan Pharmaceuticals and Medical Devices Agency (PMDA) JADER data; parsing and validation of ICH E2B(R2/R3) individual case safety reports (ICSRs); published-literature screening with AI-assisted relevance review; and social-media listening with sentiment scoring and misinformation flags.
-- **Case processing:** AI-assisted extraction of drugs, reactions, seriousness, and causality information; Medical Dictionary for Regulatory Activities (MedDRA) coding through dictionary-backed terminology services; duplicate detection using deterministic fingerprints and semantic similarity; case narratives; follow-up linkage; and case audit trails.
-- **Quantitative signal detection:** Disproportionality analysis using proportional reporting ratios (PRR), reporting odds ratios (ROR), Information Component (IC), and empirical Bayes geometric mean (EBGM), with sequential-testing safeguards.
-- **Signal review and management:** Qualitative, literature, digital-media, and regulatory signals alongside statistical signals; severity triage; human-review workflows; and signal lifecycle management. Signal types without a quantitative statistic retain that distinction rather than being assigned a zero value.
-- **Regulatory reporting:** Periodic Safety Update Reports (PSURs), Periodic Benefit-Risk Evaluation Reports (PBRERs), Council for International Organizations of Medical Sciences (CIOMS) forms, expedited-reporting deadline tracking, risk-management plans, report scheduling, and version history.
-- **Governed AI assistance:** A retrieval-grounded assistant answers questions using an organization's cases, signals, literature, and reference safety information (RSI) labels, with evidence citations. AI recommendations carry confidence information and model and prompt versions. Human decisions and final outcomes are recorded separately; recommendations remain subject to human review.
+### Signal Investigation
+- Expert-led signal assessment with Bradford Hill causality framework
+- Evidence dossier compilation from statistical, literature, clinical, and mechanistic sources
+- Cluster analysis by drug class, mechanism, reaction SOC, and patient population
+- Regulatory action tracking from validation through label updates and RMP modifications
 
-Regulated-workflow capabilities are designed to support Good Pharmacovigilance Practices (GVP) Modules VI and IX, ICH E2A/E2B/E2C, and 21 CFR Part 11 requirements through audit trails, electronic signatures, and controlled workflows. Compliance and validation depend on the deployed configuration, intended use, and organizational procedures.
+### Case Management
+- End-to-end ICSR processing with AI-assisted extraction, MedDRA coding, and duplicate detection
+- E2B(R2/R3) import/export with full round-trip fidelity
+- Deterministic fingerprint and semantic similarity duplicate detection
+- CIOMS-style narrative generation with reviewer editing
+- 21 CFR Part 11 aligned electronic signatures and audit trails
 
-Tenant isolation uses database row-level security, per-tenant vector collections, tenant-scoped analytics, and least-privilege access. The interface is designed for keyboard and screen-reader use.
+### Literature Intelligence
+- Automated screening of PubMed, OpenAlex, ClinicalTrials.gov, and FDA sources
+- Multi-stage AI filtering: fast filter → deep relevance → regulatory potential scoring
+- ICSR 4-criteria validation (identifiable patient, suspect product, adverse event, source)
+- Day-zero timeline with 15-day expedited reporting deadline tracking
+- GVP Module VI aligned literature screening SLA compliance dashboards
 
-The architecture uses domain-driven microservices for case processing, signal detection, literature, ingestion, reporting, portfolio, notification, and AI retrieval, with each service owning its data. Separate analytical stores support domain-specific safety analytics. A NATS event backbone and idempotent consumers support repeatable event processing. Versioned migrations manage datastore schemas and environment onboarding.
+### AI Investigation Agents
+- Literature Agent: Multi-source scanning with AI relevance scoring and ICSR eligibility checks
+- Case Agent: AI-assisted extraction, MedDRA coding, duplicate detection, narrative generation
+- Signal Agent: Statistical detection, Bradford Hill assessment, cross-source concordance
+- Compliance Agent: Deadline tracking, report versioning, audit trail generation, regulatory validation
+- Safety Intelligence Agent: Executive briefings, portfolio heatmaps, usage and efficiency analytics
 
-The platform serves pharmaceutical and biotechnology safety teams managing case triage and signal review; pharmacovigilance service providers managing multiple clients with tenant isolation; and regulatory and quality teams managing audit records and aggregate reporting.
+### Evidence Graph
+- Knowledge graph connecting drugs, targets, genes, proteins, diseases, and phenotypes
+- Provenance tracking for all relationships
+- Mechanism-based safety hypothesis generation
+- Graph traversal for target safety intelligence
 
-## Platform and workflows
+### Safety Analytics
+- Executive command center with portfolio overview, signal counts, critical priorities
+- AI-generated safety briefings grounded in tenant data with evidence citations
+- Drug-reaction heatmaps (PRR trends) and emerging cluster detection
+- Usage and efficiency analytics for processing throughput
 
-- [NovigaAI homepage](https://novigaai.com/): Introduction to the safety intelligence platform and connected workflows.
-- [Products](https://novigaai.com/products/): Pharmacovigilance, literature intelligence, social-media intelligence, clinical trials, compliance, and connected intelligence.
-- [Solutions](https://novigaai.com/solutions/): AI-assisted safety workflows and expert-led safety operations.
-- [Services](https://novigaai.com/services/): Implementation and safety-workflow requirements discussions.
+### Regulatory Reporting
+- PSUR/PBRER aggregate report authoring with version control
+- CIOMS form generation
+- Risk Management Plan (RMP) authoring
+- Expedited reporting deadline tracking with automated alerts
+- Electronic signatures and audit trails
 
-## Company and contact
+### Platform Architecture
+- Domain-driven design: independent services for Case, Signal, Literature, Ingestion, Reporting, Portfolio, Notification, AI Retrieval
+- Polyglot persistence: PostgreSQL (OLTP), ClickHouse (OLAP), Qdrant (Vector), Memgraph (Graph), S3/MinIO (Artifacts)
+- NATS event backbone with idempotent consumers for reliable processing
+- Container-native, Kubernetes-orchestrated, multi-region deployment ready
+- Open REST/GraphQL APIs with E2B(R2/R3) import/export and HL7 FHIR alignment
 
-- [About NovigaAI](https://novigaai.com/about-us/): Company focus and approach to connected safety intelligence.
-- [Contact and demo requests](https://novigaai.com/contact/): Contact the team about platform capabilities, use cases, and demonstrations.
+## Regulatory Alignment
+- GVP Module VI (Case Processing)
+- GVP Module IX (Signal Management)
+- ICH E2A, E2B(R3), E2C(R2)
+- 21 CFR Part 11 (Electronic Records/Signatures)
+- CIOMS I, VI, VIII
+- ISO 27001 aligned controls and a SOC 2 Type II programme
 
-## Optional
+## Target Audiences
+- Pharmaceutical & biotechnology safety teams
+- Pharmacovigilance service providers (CROs)
+- Regulatory affairs and quality functions
+- Medical safety reviewers and signal investigators
+- Leadership requiring portfolio oversight
 
-- [Resources](https://novigaai.com/resources/): Links to the platform overview and agentic AI solutions.
+## Contact
+- Website: https://www.novigaai.com/
+- Demo Request: https://www.novigaai.com/contact/#demo
+- LinkedIn: https://www.linkedin.com/company/noviga-ai/

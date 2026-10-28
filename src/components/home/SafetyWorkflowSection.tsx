@@ -6,9 +6,10 @@ const stages = [
         description: 'Bring reports, literature and digital safety information into a single starting point.',
         tags: ['FAERS / JADER', 'E2B(R2/R3)'],
         points: [
-            'Automatically download and ingest quarterly FDA FAERS and PMDA / JADER data.',
-            'Parse and validate ICH E2B(R2/R3) individual case safety reports.',
-            'Bring literature screening and social-media safety information into the same workflow.',
+            'Quarterly FDA FAERS and PMDA / JADER downloads are ingested, validated and deduplicated automatically.',
+            'ICH E2B(R2/R3) individual case safety reports are parsed and checked.',
+            'Literature and social-media safety information join the same workflow.',
+            'Partner safety data exchange via E2B gateway with automated validation.',
         ],
     },
     {
@@ -16,9 +17,10 @@ const stages = [
         description: 'Structure each case, connect follow-ups and give reviewers the context they need.',
         tags: ['MedDRA coding', 'Duplicate detection'],
         points: [
-            'Use AI-assisted extraction for drugs, reactions, seriousness and causality, with dictionary-backed MedDRA coding.',
-            'Detect duplicates through deterministic fingerprints and semantic similarity.',
-            'Prepare case narratives, link follow-ups and retain a complete audit trail.',
+            'AI-assisted extraction for drugs, reactions, seriousness and causality, with dictionary-backed MedDRA coding.',
+            'Duplicates detected through deterministic fingerprints and semantic similarity.',
+            'Case narratives prepared, follow-ups linked and a complete audit trail retained.',
+            'Human-in-the-loop review for all AI-suggested coding and case assessments.',
         ],
     },
     {
@@ -26,9 +28,10 @@ const stages = [
         description: 'Combine statistical and qualitative evidence to assess and prioritise emerging signals.',
         tags: ['Signal triage', 'Expert review'],
         points: [
-            'Apply PRR, ROR, Information Component and EBGM analysis with sequential-testing safeguards.',
-            'Review qualitative, literature, digital-media and regulatory signals alongside statistical evidence.',
-            'Triage severity, route cases for human review and manage the signal lifecycle.',
+            'Scheduled and on-demand scans across PubMed, OpenAlex, ClinicalTrials.gov and FDA sources, with multi-stage AI relevance filtering.',
+            'PRR, ROR, Information Component and EBGM analysis with sequential-testing safeguards.',
+            'Cross-source concordance between FAERS, JADER, literature and social media, routed for human review per GVP IX.',
+            'Day-zero literature timelines with 15-day expedited-reporting deadline tracking.',
         ],
     },
     {
@@ -36,9 +39,10 @@ const stages = [
         description: 'Bring deadlines, reporting documents and review histories together in one workflow.',
         tags: ['PSUR / PBRER', 'CIOMS forms'],
         points: [
-            'Prepare PSUR / PBRER aggregate reports and CIOMS forms.',
-            'Track expedited-reporting deadlines and schedule reports.',
-            'Manage risk-management plans and retain full report version history.',
+            'Prepare PSUR / PBRER aggregate reports and CIOMS forms with version history.',
+            'Expedited-reporting deadlines tracked and reports scheduled with automated alerts.',
+            'Risk-management plans (RMPs) managed with full report version history.',
+            'Electronic signatures and 21 CFR Part 11 aligned audit trails for submissions.',
         ],
     },
 ];
