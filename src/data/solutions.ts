@@ -148,113 +148,113 @@ export const solutionsData: Record<string, SolutionData> = {
     ],
   }),
 
-  "literature-intelligence": solution({
-    id: "literature-intelligence",
-    name: "Literature Intelligence",
-    category: "By Use Case",
-    summary:
-      "Systematic literature surveillance with AI-assisted relevance scoring, ICSR eligibility checks and reviewable exclusion reasons.",
-    overview:
-      "Literature screening is high volume, deadline-driven and difficult to evidence when it is done in spreadsheets. This solution schedules searches across bibliographic and trial sources, filters noise in stages and asks a qualified reviewer to confirm every inclusion and exclusion. Day-zero timestamps and 15-day reporting windows stay visible, and each decision carries the rationale that supports it.",
-    challenges: [
-      "Search volumes grow faster than reviewer capacity.",
-      "Exclusion decisions are inconsistently documented.",
-      "Reportable cases are identified late in the screening cycle.",
-      "Screening SLAs and expedited deadlines are tracked manually.",
-    ],
-    approach: [
-      {
-        title: "Scheduled, reproducible searches",
-        description:
-          "Search profiles are defined per product and reaction, then run on a schedule across PubMed, OpenAlex, Europe PMC and trial registries.",
-      },
-      {
-        title: "Staged relevance screening",
-        description:
-          "Fast filtering, deeper relevance assessment and regulatory-potential scoring reduce noise while keeping every result auditable.",
-      },
-      {
-        title: "ICSR eligibility assessment",
-        description:
-          "The four ICSR criteria are checked explicitly, and eligible articles become case candidates with source text attached.",
-      },
-      {
-        title: "Documented human decisions",
-        description:
-          "Reviewers confirm or reverse AI suggestions and record a reason for every exclusion, producing an inspection-ready screening record.",
-      },
-    ],
-    outcomes: [
-      "Higher screening throughput without reducing reviewer control",
-      "A complete, reason-coded record of inclusions and exclusions",
-      "Earlier identification of reportable literature cases",
-      "Visibility of screening SLAs and expedited deadlines",
-    ],
-    products: ["literature-intelligence", "case-intake", "case-management", "evidence-research"],
-    audiences: ["Literature teams", "PV operations", "Medical reviewers"],
-    faqs: [
-      {
-        question: "Which sources are supported?",
-        answer:
-          "PubMed, OpenAlex, Europe PMC and ClinicalTrials.gov are supported out of the box. Licensed databases and custom feeds can be connected through the integration layer.",
-      },
-      ...sharedSolutionsFaqs,
-    ],
-  }),
+  // "literature-intelligence": solution({
+  //   id: "literature-intelligence",
+  //   name: "Literature Intelligence",
+  //   category: "By Use Case",
+  //   summary:
+  //     "Systematic literature surveillance with AI-assisted relevance scoring, ICSR eligibility checks and reviewable exclusion reasons.",
+  //   overview:
+  //     "Literature screening is high volume, deadline-driven and difficult to evidence when it is done in spreadsheets. This solution schedules searches across bibliographic and trial sources, filters noise in stages and asks a qualified reviewer to confirm every inclusion and exclusion. Day-zero timestamps and 15-day reporting windows stay visible, and each decision carries the rationale that supports it.",
+  //   challenges: [
+  //     "Search volumes grow faster than reviewer capacity.",
+  //     "Exclusion decisions are inconsistently documented.",
+  //     "Reportable cases are identified late in the screening cycle.",
+  //     "Screening SLAs and expedited deadlines are tracked manually.",
+  //   ],
+  //   approach: [
+  //     {
+  //       title: "Scheduled, reproducible searches",
+  //       description:
+  //         "Search profiles are defined per product and reaction, then run on a schedule across PubMed, OpenAlex, Europe PMC and trial registries.",
+  //     },
+  //     {
+  //       title: "Staged relevance screening",
+  //       description:
+  //         "Fast filtering, deeper relevance assessment and regulatory-potential scoring reduce noise while keeping every result auditable.",
+  //     },
+  //     {
+  //       title: "ICSR eligibility assessment",
+  //       description:
+  //         "The four ICSR criteria are checked explicitly, and eligible articles become case candidates with source text attached.",
+  //     },
+  //     {
+  //       title: "Documented human decisions",
+  //       description:
+  //         "Reviewers confirm or reverse AI suggestions and record a reason for every exclusion, producing an inspection-ready screening record.",
+  //     },
+  //   ],
+  //   outcomes: [
+  //     "Higher screening throughput without reducing reviewer control",
+  //     "A complete, reason-coded record of inclusions and exclusions",
+  //     "Earlier identification of reportable literature cases",
+  //     "Visibility of screening SLAs and expedited deadlines",
+  //   ],
+  //   products: ["literature-intelligence", "case-intake", "case-management", "evidence-research"],
+  //   audiences: ["Literature teams", "PV operations", "Medical reviewers"],
+  //   faqs: [
+  //     {
+  //       question: "Which sources are supported?",
+  //       answer:
+  //         "PubMed, OpenAlex, Europe PMC and ClinicalTrials.gov are supported out of the box. Licensed databases and custom feeds can be connected through the integration layer.",
+  //     },
+  //     ...sharedSolutionsFaqs,
+  //   ],
+  // }),
 
-  "drug-target-safety": solution({
-    id: "drug-target-safety",
-    name: "Drug & Target Safety Intelligence",
-    category: "By Use Case",
-    summary:
-      "Mechanism-aware safety intelligence that traverses drugs, targets, pathways, diseases and phenotypes with evidence on every relationship.",
-    overview:
-      "Statistical association tells you that something happened; mechanism can help explain why. This solution connects safety data to a curated knowledge graph so scientists can explore plausible biological explanations, compare compounds in a class and identify risks that may generalise across a portfolio. Graph paths are hypotheses with provenance, never automatic conclusions.",
-    challenges: [
-      "Mechanistic context lives with R&D, not safety.",
-      "Class effects are rediscovered product by product.",
-      "Literature on targets and pathways is difficult to connect to safety questions.",
-      "Hypotheses are not retained alongside the signal record.",
-    ],
-    approach: [
-      {
-        title: "Connected entity graph",
-        description:
-          "Drugs, targets, genes, pathways, diseases and phenotypes are linked with source, evidence type and confidence recorded on each edge.",
-      },
-      {
-        title: "Guided traversal",
-        description:
-          "Start from a drug, reaction or signal and explore relationships with filters for evidence strength and mechanism.",
-      },
-      {
-        title: "Portfolio and class views",
-        description:
-          "Compare related products by target, pathway or therapeutic class to identify potential class effects and differentiated risk.",
-      },
-      {
-        title: "Hypotheses attached to the record",
-        description:
-          "Promising paths are saved to the signal dossier with the reviewer's note, so mechanism reasoning is part of the audit trail.",
-      },
-    ],
-    outcomes: [
-      "Better mechanistic context for signal evaluation",
-      "Earlier awareness of potential class effects",
-      "Reuse of target and pathway knowledge across products",
-      "Mechanism hypotheses retained with their evidence",
-    ],
-    products: ["evidence-graph", "signal-investigation", "evidence-research", "safety-analytics"],
-    audiences: ["R&D safety teams", "Translational safety", "Signal scientists"],
-    faqs: [
-      {
-        question: "Is graph output treated as evidence?",
-        answer:
-          "Graph paths generate hypotheses. Reviewers must evaluate the underlying sources and record their own conclusion; the graph never asserts causality.",
-      },
-      ...sharedSolutionsFaqs,
-    ],
-  }),
+  // "drug-target-safety": solution({
+  //   id: "drug-target-safety",
+  //   name: "Drug & Target Safety Intelligence",
+  //   category: "By Use Case",
+  //   summary:
+  //     "Mechanism-aware safety intelligence that traverses drugs, targets, pathways, diseases and phenotypes with evidence on every relationship.",
+  //   overview:
+  //     "Statistical association tells you that something happened; mechanism can help explain why. This solution connects safety data to a curated knowledge graph so scientists can explore plausible biological explanations, compare compounds in a class and identify risks that may generalise across a portfolio. Graph paths are hypotheses with provenance, never automatic conclusions.",
+  //   challenges: [
+  //     "Mechanistic context lives with R&D, not safety.",
+  //     "Class effects are rediscovered product by product.",
+  //     "Literature on targets and pathways is difficult to connect to safety questions.",
+  //     "Hypotheses are not retained alongside the signal record.",
+  //   ],
+  //   approach: [
+  //     {
+  //       title: "Connected entity graph",
+  //       description:
+  //         "Drugs, targets, genes, pathways, diseases and phenotypes are linked with source, evidence type and confidence recorded on each edge.",
+  //     },
+  //     {
+  //       title: "Guided traversal",
+  //       description:
+  //         "Start from a drug, reaction or signal and explore relationships with filters for evidence strength and mechanism.",
+  //     },
+  //     {
+  //       title: "Portfolio and class views",
+  //       description:
+  //         "Compare related products by target, pathway or therapeutic class to identify potential class effects and differentiated risk.",
+  //     },
+  //     {
+  //       title: "Hypotheses attached to the record",
+  //       description:
+  //         "Promising paths are saved to the signal dossier with the reviewer's note, so mechanism reasoning is part of the audit trail.",
+  //     },
+  //   ],
+  //   outcomes: [
+  //     "Better mechanistic context for signal evaluation",
+  //     "Earlier awareness of potential class effects",
+  //     "Reuse of target and pathway knowledge across products",
+  //     "Mechanism hypotheses retained with their evidence",
+  //   ],
+  //   products: ["evidence-graph", "signal-investigation", "evidence-research", "safety-analytics"],
+  //   audiences: ["R&D safety teams", "Translational safety", "Signal scientists"],
+  //   faqs: [
+  //     {
+  //       question: "Is graph output treated as evidence?",
+  //       answer:
+  //         "Graph paths generate hypotheses. Reviewers must evaluate the underlying sources and record their own conclusion; the graph never asserts causality.",
+  //     },
+  //     ...sharedSolutionsFaqs,
+  //   ],
+  // }),
 
   "ai-assisted-investigation": solution({
     id: "ai-assisted-investigation",
@@ -526,59 +526,59 @@ export const solutionsData: Record<string, SolutionData> = {
     ],
   }),
 
-  leadership: solution({
-    id: "leadership",
-    name: "For Leadership",
-    category: "By Role",
-    summary:
-      "Portfolio-level safety oversight with current KPIs, emerging risk visibility and evidence-grounded executive briefings.",
-    overview:
-      "Safety leadership needs to know where risk is accumulating, whether operations are keeping pace and what changed since the last review. This solution brings portfolio metrics, signal activity, backlog and SLA performance into a consistent view, with AI-drafted briefings that cite the underlying records. Leaders see the same evidence as their teams, at the level of detail they need.",
-    challenges: [
-      "Executive reporting is assembled manually from inconsistent sources.",
-      "Portfolio risk is reviewed periodically rather than continuously.",
-      "Operational metrics and safety outcomes are reported separately.",
-      "Briefings describe activity without linking to evidence.",
-    ],
-    approach: [
-      {
-        title: "One portfolio view",
-        description:
-          "Case volumes, timeliness, signal activity, priority mix and literature SLAs are presented in a shared operational view.",
-      },
-      {
-        title: "Risk heatmaps",
-        description:
-          "Compare products, regions and periods to see where risk and workload are concentrated.",
-      },
-      {
-        title: "Grounded briefings",
-        description:
-          "AI drafts period summaries from tenant data; a safety lead reviews and approves before distribution.",
-      },
-      {
-        title: "Traceable metrics",
-        description:
-          "Every figure links to its query and underlying records, so leadership questions can be answered with evidence.",
-      },
-    ],
-    outcomes: [
-      "Less time spent assembling recurring reports",
-      "Earlier visibility of portfolio-level risk concentration",
-      "Consistent metrics across operations and safety",
-      "Briefings that can be traced back to source data",
-    ],
-    products: ["safety-analytics", "risk-intelligence", "signal-detection", "ai-agents"],
-    audiences: ["VP Safety", "Head of PV", "Chief Medical Officer"],
-    faqs: [
-      {
-        question: "Can leaders see data across all tenants?",
-        answer:
-          "No. Access is scoped by role within a tenant. Cross-tenant reporting is not enabled by default and requires an explicitly governed arrangement.",
-      },
-      ...sharedSolutionsFaqs,
-    ],
-  }),
+  // leadership: solution({
+  //   id: "leadership",
+  //   name: "For Leadership",
+  //   category: "By Role",
+  //   summary:
+  //     "Portfolio-level safety oversight with current KPIs, emerging risk visibility and evidence-grounded executive briefings.",
+  //   overview:
+  //     "Safety leadership needs to know where risk is accumulating, whether operations are keeping pace and what changed since the last review. This solution brings portfolio metrics, signal activity, backlog and SLA performance into a consistent view, with AI-drafted briefings that cite the underlying records. Leaders see the same evidence as their teams, at the level of detail they need.",
+  //   challenges: [
+  //     "Executive reporting is assembled manually from inconsistent sources.",
+  //     "Portfolio risk is reviewed periodically rather than continuously.",
+  //     "Operational metrics and safety outcomes are reported separately.",
+  //     "Briefings describe activity without linking to evidence.",
+  //   ],
+  //   approach: [
+  //     {
+  //       title: "One portfolio view",
+  //       description:
+  //         "Case volumes, timeliness, signal activity, priority mix and literature SLAs are presented in a shared operational view.",
+  //     },
+  //     {
+  //       title: "Risk heatmaps",
+  //       description:
+  //         "Compare products, regions and periods to see where risk and workload are concentrated.",
+  //     },
+  //     {
+  //       title: "Grounded briefings",
+  //       description:
+  //         "AI drafts period summaries from tenant data; a safety lead reviews and approves before distribution.",
+  //     },
+  //     {
+  //       title: "Traceable metrics",
+  //       description:
+  //         "Every figure links to its query and underlying records, so leadership questions can be answered with evidence.",
+  //     },
+  //   ],
+  //   outcomes: [
+  //     "Less time spent assembling recurring reports",
+  //     "Earlier visibility of portfolio-level risk concentration",
+  //     "Consistent metrics across operations and safety",
+  //     "Briefings that can be traced back to source data",
+  //   ],
+  //   products: ["safety-analytics", "risk-intelligence", "signal-detection", "ai-agents"],
+  //   audiences: ["VP Safety", "Head of PV", "Chief Medical Officer"],
+  //   faqs: [
+  //     {
+  //       question: "Can leaders see data across all tenants?",
+  //       answer:
+  //         "No. Access is scoped by role within a tenant. Cross-tenant reporting is not enabled by default and requires an explicitly governed arrangement.",
+  //     },
+  //     ...sharedSolutionsFaqs,
+  //   ],
+  // }),
 
   "pharma-biotech": solution({
     id: "pharma-biotech",
@@ -634,59 +634,59 @@ export const solutionsData: Record<string, SolutionData> = {
     ],
   }),
 
-  cros: solution({
-    id: "cros",
-    name: "CROs & Service Providers",
-    category: "By Organization",
-    summary:
-      "Run multiple client safety programmes on one platform with structural isolation and auditable engagement boundaries.",
-    overview:
-      "Service providers need efficiency across clients without any risk of data crossover. This solution uses tenant isolation at the storage and query layers, per-client workflows and role scoping to keep engagements separate. Operators get a consistent processing model across clients, while each client retains its own configuration, data and audit history.",
-    challenges: [
-      "Client data must never mix, including in analytics and AI retrieval.",
-      "Each client expects its own workflows, templates and terminology.",
-      "Demonstrating isolation to clients and auditors is time-consuming.",
-      "Operational efficiency falls when every client runs a separate instance.",
-    ],
-    approach: [
-      {
-        title: "Structural tenant isolation",
-        description:
-          "Row-level security, tenant-scoped analytics, per-tenant vector collections and tenant-prefixed storage.",
-      },
-      {
-        title: "Per-client configuration",
-        description:
-          "Workflows, queues, thresholds, report templates and dictionaries are configured for each engagement.",
-      },
-      {
-        title: "Role-scoped access",
-        description:
-          "Staff access is limited to the clients and functions they are authorised to support, with segregation of duties.",
-      },
-      {
-        title: "Auditable boundaries",
-        description:
-          "Administrative actions, access changes and configuration history are recorded for client and regulator review.",
-      },
-    ],
-    outcomes: [
-      "One operating model across multiple clients",
-      "Isolation that can be demonstrated, not just asserted",
-      "Client-specific workflows without separate infrastructure",
-      "Consistent audit evidence across engagements",
-    ],
-    products: ["administration", "compliance", "case-management", "safety-analytics"],
-    audiences: ["PV service providers", "Outsourcing managers", "Client governance teams"],
-    faqs: [
-      {
-        question: "Can client administrators see other clients?",
-        answer:
-          "No. Access is scoped within a tenant. Cross-tenant visibility is not available through standard roles and would require a separately governed arrangement.",
-      },
-      ...sharedSolutionsFaqs,
-    ],
-  }),
+  // cros: solution({
+  //   id: "cros",
+  //   name: "CROs & Service Providers",
+  //   category: "By Organization",
+  //   summary:
+  //     "Run multiple client safety programmes on one platform with structural isolation and auditable engagement boundaries.",
+  //   overview:
+  //     "Service providers need efficiency across clients without any risk of data crossover. This solution uses tenant isolation at the storage and query layers, per-client workflows and role scoping to keep engagements separate. Operators get a consistent processing model across clients, while each client retains its own configuration, data and audit history.",
+  //   challenges: [
+  //     "Client data must never mix, including in analytics and AI retrieval.",
+  //     "Each client expects its own workflows, templates and terminology.",
+  //     "Demonstrating isolation to clients and auditors is time-consuming.",
+  //     "Operational efficiency falls when every client runs a separate instance.",
+  //   ],
+  //   approach: [
+  //     {
+  //       title: "Structural tenant isolation",
+  //       description:
+  //         "Row-level security, tenant-scoped analytics, per-tenant vector collections and tenant-prefixed storage.",
+  //     },
+  //     {
+  //       title: "Per-client configuration",
+  //       description:
+  //         "Workflows, queues, thresholds, report templates and dictionaries are configured for each engagement.",
+  //     },
+  //     {
+  //       title: "Role-scoped access",
+  //       description:
+  //         "Staff access is limited to the clients and functions they are authorised to support, with segregation of duties.",
+  //     },
+  //     {
+  //       title: "Auditable boundaries",
+  //       description:
+  //         "Administrative actions, access changes and configuration history are recorded for client and regulator review.",
+  //     },
+  //   ],
+  //   outcomes: [
+  //     "One operating model across multiple clients",
+  //     "Isolation that can be demonstrated, not just asserted",
+  //     "Client-specific workflows without separate infrastructure",
+  //     "Consistent audit evidence across engagements",
+  //   ],
+  //   products: ["administration", "compliance", "case-management", "safety-analytics"],
+  //   audiences: ["PV service providers", "Outsourcing managers", "Client governance teams"],
+  //   faqs: [
+  //     {
+  //       question: "Can client administrators see other clients?",
+  //       answer:
+  //         "No. Access is scoped within a tenant. Cross-tenant visibility is not available through standard roles and would require a separately governed arrangement.",
+  //     },
+  //     ...sharedSolutionsFaqs,
+  //   ],
+  // }),
 
   "regulatory-agencies": solution({
     id: "regulatory-agencies",

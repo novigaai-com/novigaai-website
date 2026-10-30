@@ -86,9 +86,9 @@ export const navigation: NavItem[] = [
           { label: "Earlier Signal Identification", href: "/solutions/earlier-signal-identification", description: "Continuous surveillance that shortens time to detection" },
           { label: "Evidence-Based Assessment", href: "/solutions/evidence-based-assessment", description: "Connect every decision to traceable evidence" },
          // { label: "Literature Intelligence", href: "/solutions/literature-intelligence", description: "Screening with AI assistance and documented human review" },
-          { label: "Drug & Target Safety", href: "/solutions/drug-target-safety", description: "Mechanism-based safety intelligence across the portfolio" },
+          //{ label: "Drug & Target Safety", href: "/solutions/drug-target-safety", description: "Mechanism-based safety intelligence across the portfolio" },
           { label: "AI-Assisted Investigation", href: "/solutions/ai-assisted-investigation", description: "Agents that prepare; experts who decide" },
-         // { label: "Safety Risk Prioritisation", href: "/solutions/safety-risk-prioritization", description: "Severity, impact and regulatory urgency in one score" },
+          { label: "Safety Risk Prioritisation", href: "/solutions/safety-risk-prioritization", description: "Severity, impact and regulatory urgency in one score" },
         ],
       },
       {
@@ -104,7 +104,7 @@ export const navigation: NavItem[] = [
         title: "By Organization",
         items: [
           { label: "Pharma & Biotech", href: "/solutions/pharma-biotech", description: "Scalable safety operations for every stage" },
-          { label: "CROs & Service Providers", href: "/solutions/cros", description: "Multi-client management with strict data isolation" },
+          //{ label: "CROs & Service Providers", href: "/solutions/cros", description: "Multi-client management with strict data isolation" },
           { label: "Regulatory Agencies", href: "/solutions/regulatory-agencies", description: "Public-health surveillance and signal monitoring" },
         ],
       },
