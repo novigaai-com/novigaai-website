@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 const features = [
@@ -10,9 +10,39 @@ const features = [
 
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const playerRef = useRef<HTMLDivElement>(null);
   const hasAttemptedAutoplay = useRef(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [fullscreenError, setFullscreenError] = useState("");
+
+  useEffect(() => {
+    const syncFullscreen = () => {
+      setIsFullscreen(document.fullscreenElement === playerRef.current);
+    };
+    document.addEventListener("fullscreenchange", syncFullscreen);
+    return () => document.removeEventListener("fullscreenchange", syncFullscreen);
+  }, []);
+
+  const toggleFullscreen = async () => {
+    setFullscreenError("");
+    try {
+      if (document.fullscreenElement === playerRef.current) {
+        await document.exitFullscreen();
+      } else if (playerRef.current?.requestFullscreen) {
+        await playerRef.current.requestFullscreen();
+      } else {
+        const video = videoRef.current as (HTMLVideoElement & {
+          webkitEnterFullscreen?: () => void;
+        }) | null;
+        if (video?.webkitEnterFullscreen) video.webkitEnterFullscreen();
+        else setFullscreenError("Fullscreen is unavailable in this browser.");
+      }
+    } catch {
+      setFullscreenError("Unable to open fullscreen. Please try again.");
+    }
+  };
 
   const playWhenReady = () => {
     const video = videoRef.current;
@@ -89,7 +119,7 @@ export default function Hero() {
             ))}
           </ul>
         </div>
-        <div className="dashboard-image-wrap">
+        <div className="dashboard-image-wrap" ref={playerRef}>
           <video
             ref={videoRef}
             src="/assets/product_demo.mp4"
@@ -152,6 +182,29 @@ export default function Hero() {
                 )}
               </svg>
             </button>
+            <button
+              type="button"
+              onClick={() => void toggleFullscreen()}
+              aria-label={isFullscreen ? "Exit fullscreen" : "View fullscreen"}
+              title={isFullscreen ? "Exit fullscreen" : "View fullscreen"}
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d={isFullscreen
+                  ? "M3 9h6V3m6 0v6h6M3 15h6v6m6 0v-6h6"
+                  : "M8 3H3v5m13-5h5v5M3 16v5h5m8 0h5v-5"} />
+              </svg>
+            </button>
+            {fullscreenError && <span role="status">{fullscreenError}</span>}
           </div>
         </div>
       </div>
