@@ -138,7 +138,7 @@
   max-width: none;
   height: clamp(320px, 60svh, 700px);
   background: #10233e;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 12px;
 }
 

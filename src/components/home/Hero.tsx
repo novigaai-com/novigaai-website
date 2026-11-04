@@ -122,7 +122,7 @@ export default function Hero() {
         <div className="dashboard-image-wrap" ref={playerRef}>
           <video
             ref={videoRef}
-            src="/assets/product_demo.mp4"
+            src="/assets/product_demo_web.mp4"
             poster="/assets/dashboard2.png"
             preload="auto"
             aria-label="NovigaAI product demo"
