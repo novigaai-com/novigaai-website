@@ -34,10 +34,10 @@
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 44% 56%;
+  grid-template-columns: 40% 60%;
   align-items: center;
   gap: 8px;
-  min-height: 550px;
+  min-height: 580px;
   padding: 0;
 }
 
@@ -136,10 +136,9 @@
   display: block;
   width: 100%;
   max-width: none;
-  height: auto;
-  aspect-ratio: 16 / 9;
+  height: clamp(320px, 60svh, 700px);
   background: #10233e;
-  object-fit: contain;
+  object-fit: cover;
   border-radius: 12px;
 }
 
@@ -153,6 +152,7 @@
 
   video {
     height: 100%;
+    object-fit: contain;
     border-radius: 0;
   }
 }
