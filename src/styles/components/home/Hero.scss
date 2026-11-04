@@ -137,11 +137,14 @@
   width: 100%;
   max-width: none;
   height: auto;
+  aspect-ratio: 16 / 9;
+  background: #10233e;
   object-fit: contain;
   border-radius: 12px;
 }
 
 .hero-video-controls {
+  gap: 8px;
   position: absolute;
   right: 10px;
   bottom: 10px;

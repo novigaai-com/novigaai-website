@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 const features = [
@@ -10,24 +10,35 @@ const features = [
 
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const hasAttemptedAutoplay = useRef(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
 
-  useEffect(() => {
+  const playWhenReady = () => {
     const video = videoRef.current;
-    if (!video) return;
+    if (!video || hasAttemptedAutoplay.current) return;
 
-    let active = true;
-    void video.play().catch(() => {
-      if (active) setIsPlaying(false);
+    hasAttemptedAutoplay.current = true;
+    void video.play().catch((error: unknown) => {
+      if (!video.isConnected) return;
+      if (
+        !(error instanceof DOMException) ||
+        error.name !== "NotAllowedError"
+      ) {
+        setIsPlaying(false);
+        return;
+      }
+      // Browsers allow muted autoplay when playback with sound is blocked.
+      video.muted = true;
+      setIsMuted(true);
+      void video.play().catch(() => setIsPlaying(false));
     });
-    return () => {
-      active = false;
-    };
-  }, []);
+  };
 
   const togglePlayback = () => {
     const video = videoRef.current;
     if (!video) return;
+    hasAttemptedAutoplay.current = true;
     if (video.paused) {
       void video.play().catch(() => setIsPlaying(false));
     } else {
@@ -82,10 +93,17 @@ export default function Hero() {
           <video
             ref={videoRef}
             src="/assets/product_demo.mp4"
+            poster="/assets/dashboard2.png"
+            preload="auto"
             aria-label="NovigaAI product demo"
-            autoPlay
+            loop
             playsInline
-            muted={false}
+            muted={isMuted}
+            onLoadedMetadata={(event) => {
+              const video = event.currentTarget;
+              if (video.duration > 2) video.currentTime = 2;
+            }}
+            onCanPlay={playWhenReady}
             onPlay={() => setIsPlaying(true)}
             onPause={() => setIsPlaying(false)}
             onEnded={() => setIsPlaying(false)}
@@ -99,7 +117,40 @@ export default function Hero() {
               }
             >
               <span aria-hidden="true">{isPlaying ? "Ⅱ" : "▶"}</span>
-              {/* {isPlaying ? "Pause" : "Play"} */}
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                const video = videoRef.current;
+                if (!video) return;
+                video.muted = !video.muted;
+                setIsMuted(video.muted);
+              }}
+              aria-label={isMuted ? "Unmute demo audio" : "Mute demo audio"}
+              aria-pressed={isMuted}
+              title={isMuted ? "Unmute" : "Mute"}
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M11 5 6 9H3v6h3l5 4V5Z" />
+                {isMuted ? (
+                  <path d="m16 9 6 6m0-6-6 6" />
+                ) : (
+                  <>
+                    <path d="M15 8a6 6 0 0 1 0 8" />
+                    <path d="M18 5a10 10 0 0 1 0 14" />
+                  </>
+                )}
+              </svg>
             </button>
           </div>
         </div>
