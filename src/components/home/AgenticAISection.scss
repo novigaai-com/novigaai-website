@@ -28,8 +28,10 @@
         }
 
         h2 {
-            margin: 0 0 10px;
-            font-size: clamp(1.375rem, 2.05vw, 1.75rem);
+            margin: 0 0 16px;
+            color: #f4f7ff;
+            font-size: clamp(1.75rem, 2.3vw, 2.125rem);
+            font-weight: 700;
             line-height: 1.2;
             letter-spacing: -.045em;
         }

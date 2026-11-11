@@ -22,7 +22,8 @@ export default function Hero() {
       setIsFullscreen(document.fullscreenElement === playerRef.current);
     };
     document.addEventListener("fullscreenchange", syncFullscreen);
-    return () => document.removeEventListener("fullscreenchange", syncFullscreen);
+    return () =>
+      document.removeEventListener("fullscreenchange", syncFullscreen);
   }, []);
 
   const toggleFullscreen = async () => {
@@ -33,9 +34,11 @@ export default function Hero() {
       } else if (playerRef.current?.requestFullscreen) {
         await playerRef.current.requestFullscreen();
       } else {
-        const video = videoRef.current as (HTMLVideoElement & {
-          webkitEnterFullscreen?: () => void;
-        }) | null;
+        const video = videoRef.current as
+          | (HTMLVideoElement & {
+              webkitEnterFullscreen?: () => void;
+            })
+          | null;
         if (video?.webkitEnterFullscreen) video.webkitEnterFullscreen();
         else setFullscreenError("Fullscreen is unavailable in this browser.");
       }
@@ -199,9 +202,13 @@ export default function Hero() {
                 strokeLinejoin="round"
                 aria-hidden="true"
               >
-                <path d={isFullscreen
-                  ? "M3 9h6V3m6 0v6h6M3 15h6v6m6 0v-6h6"
-                  : "M8 3H3v5m13-5h5v5M3 16v5h5m8 0h5v-5"} />
+                <path
+                  d={
+                    isFullscreen
+                      ? "M3 9h6V3m6 0v6h6M3 15h6v6m6 0v-6h6"
+                      : "M8 3H3v5m13-5h5v5M3 16v5h5m8 0h5v-5"
+                  }
+                />
               </svg>
             </button>
             {fullscreenError && <span role="status">{fullscreenError}</span>}

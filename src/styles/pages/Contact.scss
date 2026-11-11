@@ -216,7 +216,14 @@
   color: var(--color-text-primary);
 }
 
-.contact-form-card label > span {
+.contact-label-text {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.25em;
+  white-space: nowrap;
+}
+
+.contact-form-card .contact-required {
   color: var(--color-error);
 }
 

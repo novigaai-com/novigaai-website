@@ -40,7 +40,7 @@ export default function AgenticAISection() {
         <div className="wrap ai-layout">
           <div className="ai-intro">
             <p className="eyebrow">EVIDENCE-LED. HUMAN-REVIEWED.</p>
-            <h2 id="agentic-ai-title">The Power of Agentic AI</h2>
+            <h2 id="agentic-ai-title">Governed AI. Human expertise.</h2>
             <p>
               Noviga's retrieval-grounded assistant answers from your own cases, signals, literature and RSI labels, with
               evidence citations. AI supports your reviewers; people retain control of critical decisions.
