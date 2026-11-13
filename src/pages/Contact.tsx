@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react';
+import { useEffect, useRef, useState, type FormEvent } from 'react';
 import PageMeta from '../components/common/PageMeta';
 
 type Status = 'idle' | 'sending' | 'success' | 'error';
@@ -7,13 +7,31 @@ const interests = ['Pharmacovigilance', 'Literature Intelligence', 'Social Media
 export default function Contact() {
   const [status, setStatus] = useState<Status>('idle');
   const [feedback, setFeedback] = useState('');
+  const submittingRef = useRef(false);
+  const feedbackRef = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    if (feedback && (status === 'success' || status === 'error')) {
+      feedbackRef.current?.focus();
+    }
+  }, [feedback, status]);
+
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (submittingRef.current) return;
     const form = event.currentTarget;
-    const payload = Object.fromEntries(new FormData(form).entries());
-    if (status === 'sending') return;
+    const payload = Object.fromEntries(
+      Array.from(new FormData(form).entries(), ([name, value]) =>
+        [name, typeof value === 'string' ? value.trim() : value]),
+    );
+    if (!payload.name || !payload.email || !payload.company || !payload.interest) {
+      setStatus('error');
+      setFeedback('Please complete your name, work email, company and area of interest.');
+      return;
+    }
     const endpoint = import.meta.env.VITE_CONTACT_ENDPOINT || '/api/contact';
 
+    submittingRef.current = true;
     setStatus('sending');
     setFeedback('');
     try {
@@ -33,10 +51,12 @@ export default function Contact() {
       }
       form.reset();
       setStatus('success');
-      setFeedback('Thank you. Your request has been submitted successfully.');
+      setFeedback('Thank you. Your request has been sent to the NovigaAI team.');
     } catch {
       setStatus('error');
       setFeedback('We could not submit your request. Please try again or email contact@novigaai.com.');
+    } finally {
+      submittingRef.current = false;
     }
   }
   return (
@@ -67,20 +87,20 @@ export default function Contact() {
           </div>
           <div className="contact-form-card">
             <div className="contact-form-heading"><span className="contact-form-mark" aria-hidden="true">✦</span><div><h2>Request a Demo</h2><p>Fill in your details and tell us what you're looking for.</p></div></div>
-            <form onSubmit={handleSubmit} aria-busy={status === 'sending'}>
+            <form onSubmit={handleSubmit} aria-busy={status === 'sending'} aria-describedby={feedback ? 'contact-feedback' : undefined}>
               <div hidden aria-hidden="true"><label>Website<input name="website" type="text" tabIndex={-1} autoComplete="off" maxLength={200}/></label></div>
               <div className="contact-fields-two">
-                <label><span className="contact-label-text">Full name <span className="contact-required" aria-hidden="true">*</span></span><input name="name" type="text" autoComplete="name" placeholder="Your full name" required maxLength={120}/></label>
-                <label><span className="contact-label-text">Work email <span className="contact-required" aria-hidden="true">*</span></span><input name="email" type="email" autoComplete="email" placeholder="you@company.com" required maxLength={254}/></label>
+                <label><span className="contact-label-text">Full name <span className="contact-required" aria-hidden="true">*</span></span><input name="name" disabled={status === 'sending'} type="text" autoComplete="name" placeholder="Your full name" required maxLength={120}/></label>
+                <label><span className="contact-label-text">Work email <span className="contact-required" aria-hidden="true">*</span></span><input name="email" disabled={status === 'sending'} type="email" autoComplete="email" placeholder="you@company.com" required maxLength={254}/></label>
               </div>
               <div className="contact-fields-two">
-                <label><span className="contact-label-text">Company <span className="contact-required" aria-hidden="true">*</span></span><input name="company" type="text" autoComplete="organization" placeholder="Company name" required maxLength={160}/></label>
-                <label>Job title<input name="jobTitle" type="text" autoComplete="organization-title" placeholder="Your role" maxLength={120}/></label>
+                <label><span className="contact-label-text">Company <span className="contact-required" aria-hidden="true">*</span></span><input name="company" disabled={status === 'sending'} type="text" autoComplete="organization" placeholder="Company name" required maxLength={160}/></label>
+                <label>Job title<input name="jobTitle" disabled={status === 'sending'} type="text" autoComplete="organization-title" placeholder="Your role" maxLength={120}/></label>
               </div>
-              <label><span className="contact-label-text">Area of interest <span className="contact-required" aria-hidden="true">*</span></span><select name="interest" defaultValue="" required><option value="" disabled>Select an area</option>{interests.map(interest => <option key={interest} value={interest}>{interest}</option>)}</select></label>
-              <label>How can we help?<textarea name="message" placeholder="Tell us about your use case, challenges, or questions..." rows={5} maxLength={4000}/></label>
+              <label><span className="contact-label-text">Area of interest <span className="contact-required" aria-hidden="true">*</span></span><select name="interest" disabled={status === 'sending'} defaultValue="" required><option value="" disabled>Select an area</option>{interests.map(interest => <option key={interest} value={interest}>{interest}</option>)}</select></label>
+              <label>How can we help?<textarea name="message" disabled={status === 'sending'} placeholder="Tell us about your use case, challenges, or questions..." rows={5} maxLength={4000}/></label>
               <div className="contact-form-bottom"><p>By submitting, you agree to be contacted about your enquiry.</p><button type="submit" className="button button-primary" disabled={status === 'sending'}>{status === 'sending' ? 'Sending…' : 'Send Request'} <span aria-hidden="true">→</span></button></div>
-              {feedback && <p className={`contact-feedback ${status}`} role="status" aria-live="polite">{feedback}</p>}
+              {feedback && <p id="contact-feedback" ref={feedbackRef} tabIndex={-1} className={`contact-feedback ${status}`} role="status" aria-live="polite" aria-atomic="true">{feedback}</p>}
             </form>
           </div>
         </div>
